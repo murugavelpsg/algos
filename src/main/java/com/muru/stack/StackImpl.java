@@ -1,20 +1,31 @@
 package com.muru.stack;
 
 import com.muru.common.Node;
+import com.muru.stack.exception.StackOverflowException;
+import com.muru.stack.exception.StackUnderflowException;
 
 /**
  * Created by msivagna on 2/4/16.
+ * Implementation for a bounded buffer stack.
  */
 public class StackImpl<T extends Comparable<T>> implements Stack {
     Node<T> top;
+    Integer size;
+    Integer currentSize;
 
-    public StackImpl() {
+    public StackImpl(Integer size) {
         top = null;
+        this.size = size;
+        currentSize = 0;
     }
 
-    public void push(Object data) {
+    public void push (Object data) throws StackOverflowException {
+        if (currentSize == size) {
+            throw new StackOverflowException();
+        }
         Node newNode = new Node(data, top);
         top = newNode;
+        currentSize++;
     }
 
     public T pop() throws StackUnderflowException {
@@ -23,6 +34,7 @@ public class StackImpl<T extends Comparable<T>> implements Stack {
         }
         T data = top.getData();
         top = top.getNext();
+        currentSize--;
         return data;
     }
 
