@@ -1,0 +1,40 @@
+# Created by .gitignore support plugin (hsz.mobi)
+### Java template
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+.sonar/*
+**/target/
+.idea/
+.extract/
+*.settings
+*.classpath
+*.project
+*.swp
+*logfile*
+*.log
+*test-output
+*.orig
+*.rej
+*.diff
+*.patch
+*.iml
+.DS_Store
+preferred.xml
+*.bpmn2d
+*.log
+icfb-workflows/.xml
+icfb-messaging-server/src/main/resources/broker.xml
+*.cer
+*.txt
+*.gz
