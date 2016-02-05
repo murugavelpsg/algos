@@ -33,8 +33,6 @@ hs_err_pid*
 preferred.xml
 *.bpmn2d
 *.log
-icfb-workflows/.xml
-icfb-messaging-server/src/main/resources/broker.xml
 *.cer
 *.txt
 *.gz
