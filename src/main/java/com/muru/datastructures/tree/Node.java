@@ -1,4 +1,4 @@
-package com.muru.tree;
+package com.muru.datastructures.tree;
 
 /**
  * Created by msivagna on 2/8/16.

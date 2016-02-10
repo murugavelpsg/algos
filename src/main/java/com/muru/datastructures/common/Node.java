@@ -1,4 +1,4 @@
-package com.muru.common;
+package com.muru.datastructures.common;
 
 /**
  * Created by msivagna on 2/4/16.

@@ -1,7 +1,7 @@
-package com.muru.stack;
+package com.muru.datastructures.stack;
 
-import com.muru.stack.exception.StackOverflowException;
-import com.muru.stack.exception.StackUnderflowException;
+import com.muru.datastructures.stack.exception.StackUnderflowException;
+import com.muru.datastructures.stack.exception.StackOverflowException;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 

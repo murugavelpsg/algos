@@ -1,4 +1,4 @@
-package com.muru.stack.exception;
+package com.muru.datastructures.stack.exception;
 
 /**
  * Created by msivagna on 2/5/16.

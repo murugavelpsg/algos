@@ -1,8 +1,8 @@
-package com.muru.stack;
+package com.muru.datastructures.stack;
 
-import com.muru.common.Node;
-import com.muru.stack.exception.StackOverflowException;
-import com.muru.stack.exception.StackUnderflowException;
+import com.muru.datastructures.common.Node;
+import com.muru.datastructures.stack.exception.StackUnderflowException;
+import com.muru.datastructures.stack.exception.StackOverflowException;
 
 /**
  * Created by msivagna on 2/4/16.

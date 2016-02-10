@@ -1,4 +1,4 @@
-package com.muru.queue;
+package com.muru.datastructures.queue;
 
 import java.util.NoSuchElementException;
 
