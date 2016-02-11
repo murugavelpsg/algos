@@ -85,4 +85,14 @@ public class BinaryTreeImplTest {
     public void mustGetMinValueFromAValidBinaryTree() {
         assertEquals(leftBalancedTree.minValue(), new Integer(1));
     }
+
+    @Test
+    public void mustGetNullRootElementForEmptyTree() {
+        assertEquals(emptyBinaryTree.getRoot(), null);
+    }
+
+    @Test
+    public void mustGetCorrectRootValueForOneElementTree() {
+        assertEquals(oneElementBinaryTree.getRoot().getData(), new Integer(1));
+    }
 }

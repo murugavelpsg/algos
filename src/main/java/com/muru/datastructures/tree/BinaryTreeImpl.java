@@ -51,6 +51,10 @@ public class BinaryTreeImpl<T extends Comparable<T>> implements BinaryTree {
         return temp.data;
     }
 
+    public Node getRoot() {
+        return root;
+    }
+
     private Node<T> insertHelper(Node<T> root, Comparable<T> data) {
         if (root == null) {
             return new Node(data, null, null);
