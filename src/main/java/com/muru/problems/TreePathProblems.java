@@ -3,6 +3,9 @@ package com.muru.problems;
 import com.muru.datastructures.tree.BinaryTree;
 import com.muru.datastructures.tree.Node;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by msivagna on 2/10/16.
  */
@@ -27,5 +30,35 @@ public class TreePathProblems {
         }
         sum = sum - (Integer)root.getData();
         return hasPathSum(root.getLeft(), sum) || hasPathSum(root.getRight(), sum);
+    }
+
+    public List<List<Integer>> getPaths() {
+        List<List<Integer>> pathList = new ArrayList<List<Integer>>();
+        List<Integer> currentPath = new ArrayList<Integer>();
+        getPaths(binaryTree.getRoot(), pathList, currentPath);
+        return pathList;
+    }
+
+    private void getPaths(Node root, List<List<Integer>> pathList, List<Integer> currentPath) {
+        //Base condition
+        if (root == null) {
+            return;
+        }
+
+        if (root.getLeft() == null && root.getRight() == null) {
+            currentPath = new ArrayList<Integer>(currentPath);
+            currentPath.add((Integer)root.getData());
+            pathList.add(currentPath);
+            return;
+        }
+        //Recursion
+        currentPath = new ArrayList<Integer>(currentPath);
+        currentPath.add((Integer)root.getData());
+        getPaths(root.getLeft(), pathList, currentPath);
+        getPaths(root.getRight(), pathList, currentPath);
+    }
+
+    public void setBinaryTree(BinaryTree<Integer> binaryTree) {
+        this.binaryTree = binaryTree;
     }
 }
