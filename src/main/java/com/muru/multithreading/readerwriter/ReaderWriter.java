@@ -23,7 +23,8 @@ public class ReaderWriter {
     final Condition writerWaitQueue = lock.newCondition();
     final Condition readerWaitQueue = lock.newCondition();
 
-    public void read(ReaderThread readerThread) throws InterruptedException {
+    public void read() throws InterruptedException {
+        ReaderThread readerThread = (ReaderThread) Thread.currentThread();
         while(true) {
             try {
                 lock.lock();
@@ -50,7 +51,8 @@ public class ReaderWriter {
         }
     }
 
-    public void write(WriterThread writerThread) throws InterruptedException {
+    public void write() throws InterruptedException {
+        WriterThread writerThread = (WriterThread) Thread.currentThread();
         while(true) {
             try {
                 lock.lock();

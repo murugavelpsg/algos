@@ -15,7 +15,7 @@ public class WriterThread extends Thread {
     @Override
     public void run() {
         try {
-            readerWriter.write(this);
+            readerWriter.write();
         }
         catch (InterruptedException e) {
             System.out.println("Got exception = ");
