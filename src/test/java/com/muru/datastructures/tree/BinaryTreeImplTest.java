@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import java.util.*;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNull;
 
 /**
  * Created by msivagna on 2/8/16.
@@ -94,5 +95,25 @@ public class BinaryTreeImplTest {
     @Test
     public void mustGetCorrectRootValueForOneElementTree() {
         assertEquals(oneElementBinaryTree.getRoot().getData(), new Integer(1));
+    }
+
+    @Test
+    public void mirrorNonEmptyTreeTest() {
+        /*
+            Mirror the tree.
+            Do inorder traversal of original tree and the mirrored tree.
+            The inorder traversal of both the trees should be mirror of each other.
+         */
+        BinaryTree<Integer> mirroredBinaryTree = binaryTree.mirrorTree();
+        List<Integer> inOrderTravBinaryTree = binaryTree.inorderTraversal();
+        List<Integer> inOrderTravMirrorTree = mirroredBinaryTree.inorderTraversal();
+        Collections.reverse(inOrderTravMirrorTree);
+        assertEquals(inOrderTravBinaryTree, inOrderTravMirrorTree);
+    }
+
+    @Test
+    public void mirrorEmptyTreeTest() {
+        BinaryTree<Integer> mirroredTree = emptyBinaryTree.mirrorTree();
+        assertNull(mirroredTree.getRoot());
     }
 }

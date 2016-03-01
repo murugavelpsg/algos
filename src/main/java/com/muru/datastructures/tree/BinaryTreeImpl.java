@@ -9,34 +9,35 @@ import java.util.NoSuchElementException;
  */
 public class BinaryTreeImpl<T extends Comparable<T>> implements BinaryTree {
     Node<T> root;
+
     public void insert(Comparable data) {
         root = insertHelper(root, data);
     }
 
     public List<T> inorderTraversal() {
         List<T> output = new ArrayList<T>();
-        inorderTraversalHelper(root, output);
+        inorderTraversal(root, output);
         return output;
     }
 
     public List<T>  preOrderTraversal() {
         List<T> output = new ArrayList<T>();
-        preOrderTraversalHelper(root, output);
+        preOrderTraversal(root, output);
         return output;
     }
 
     public List<T>  postOrderTraversal() {
         List<T> output = new ArrayList<T>();
-        postOrderTraversalHelper(root, output);
+        postOrderTraversal(root, output);
         return output;
     }
 
     public int size() {
-        return sizeHelper(root);
+        return size(root);
     }
 
     public int maxDepth() {
-        return maxDepthHelper(root);
+        return maxDepth(root);
     }
 
     public T minValue() throws NoSuchElementException {
@@ -55,6 +56,26 @@ public class BinaryTreeImpl<T extends Comparable<T>> implements BinaryTree {
         return root;
     }
 
+    public void setRoot(Node root) {
+        this.root = root;
+    }
+
+    public BinaryTree mirrorTree() {
+        BinaryTree<T> mirrorTree = new BinaryTreeImpl<T>();
+        mirrorTree.setRoot(mirrorTree(this.root));
+        return mirrorTree;
+    }
+
+    private Node<T> mirrorTree(Node<T> root) {
+        if (root == null) {
+            return null;
+        }
+        Node<T> newNode = new Node<T>(root.getData());
+        newNode.setRight(mirrorTree(root.getLeft()));
+        newNode.setLeft(mirrorTree(root.getRight()));
+        return newNode;
+    }
+
     private Node<T> insertHelper(Node<T> root, Comparable<T> data) {
         if (root == null) {
             return new Node(data, null, null);
@@ -67,48 +88,48 @@ public class BinaryTreeImpl<T extends Comparable<T>> implements BinaryTree {
         return root;
     }
 
-    private void inorderTraversalHelper(Node<T> root, List<T> output) {
+    private void inorderTraversal(Node<T> root, List<T> output) {
         if (root == null) {
             return;
         }
-        inorderTraversalHelper(root.left, output);
+        inorderTraversal(root.left, output);
         output.add(root.data);
-        inorderTraversalHelper(root.right, output);
+        inorderTraversal(root.right, output);
     }
 
-    private void preOrderTraversalHelper(Node<T> root, List<T> output) {
+    private void preOrderTraversal(Node<T> root, List<T> output) {
         if (root == null) {
             return;
         }
         output.add(root.data);
-        preOrderTraversalHelper(root.left, output);
-        preOrderTraversalHelper(root.right, output);
+        preOrderTraversal(root.left, output);
+        preOrderTraversal(root.right, output);
     }
 
-    private void postOrderTraversalHelper(Node<T> root, List<T> output) {
+    private void postOrderTraversal(Node<T> root, List<T> output) {
         if (root == null) {
             return;
         }
-        postOrderTraversalHelper(root.left, output);
-        postOrderTraversalHelper(root.right, output);
+        postOrderTraversal(root.left, output);
+        postOrderTraversal(root.right, output);
         output.add(root.data);
     }
 
-    private int sizeHelper(Node<T> root) {
+    private int size(Node<T> root) {
         if (root == null) {
             return 0;
         }
 
-        return 1 + sizeHelper(root.left) + sizeHelper(root.right);
+        return 1 + size(root.left) + size(root.right);
     }
 
-    private int maxDepthHelper(Node<T> root) {
+    private int maxDepth(Node<T> root) {
         if (root == null) {
             return 0;
         }
 
-        int leftDepth = maxDepthHelper(root.left);
-        int rightDepth = maxDepthHelper(root.right);
+        int leftDepth = maxDepth(root.left);
+        int rightDepth = maxDepth(root.right);
         return 1 + (leftDepth > rightDepth ? leftDepth : rightDepth);
     }
 }

@@ -8,6 +8,12 @@ public class Node<T> {
     Node left;
     Node right;
 
+    public Node(T data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+
     public Node(T data, Node left, Node right) {
         this.data = data;
         this.left = left;
