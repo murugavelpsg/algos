@@ -7,11 +7,11 @@ import java.util.NoSuchElementException;
 /**
  * Created by msivagna on 2/8/16.
  */
-public class BinaryTreeImpl<T extends Comparable<T>> implements BinaryTree {
+public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree {
     Node<T> root;
 
     public void insert(Comparable data) {
-        root = insertHelper(root, data);
+        root = insert(root, data);
     }
 
     public List<T> inorderTraversal() {
@@ -52,6 +52,18 @@ public class BinaryTreeImpl<T extends Comparable<T>> implements BinaryTree {
         return temp.data;
     }
 
+    public T maxValue() throws NoSuchElementException {
+        if (root == null) {
+            throw new NoSuchElementException();
+        }
+
+        Node<T> temp = root;
+        while (temp.right != null) {
+            temp = temp.right;
+        }
+        return temp.data;
+    }
+
     public Node getRoot() {
         return root;
     }
@@ -61,7 +73,7 @@ public class BinaryTreeImpl<T extends Comparable<T>> implements BinaryTree {
     }
 
     public BinaryTree mirrorTree() {
-        BinaryTree<T> mirrorTree = new BinaryTreeImpl<T>();
+        BinaryTree<T> mirrorTree = new BinarySearchTreeImpl<T>();
         mirrorTree.setRoot(mirrorTree(this.root));
         return mirrorTree;
     }
@@ -101,14 +113,14 @@ public class BinaryTreeImpl<T extends Comparable<T>> implements BinaryTree {
         return newNode;
     }
 
-    private Node<T> insertHelper(Node<T> root, Comparable<T> data) {
+    private Node<T> insert(Node<T> root, Comparable<T> data) {
         if (root == null) {
             return new Node(data, null, null);
         }
         if (data.compareTo(root.data) <= 0) {
-            root.left = insertHelper(root.left, data);
+            root.left = insert(root.left, data);
         } else {
-            root.right = insertHelper(root.right, data);
+            root.right = insert(root.right, data);
         }
         return root;
     }

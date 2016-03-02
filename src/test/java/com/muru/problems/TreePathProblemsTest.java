@@ -1,7 +1,7 @@
 package com.muru.problems;
 
 import com.muru.datastructures.tree.BinaryTree;
-import com.muru.datastructures.tree.BinaryTreeImpl;
+import com.muru.datastructures.tree.BinarySearchTreeImpl;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -18,7 +18,7 @@ public class TreePathProblemsTest {
 
     @BeforeClass
     public void setup() {
-        emptyBinaryTree = new BinaryTreeImpl<Integer>();
+        emptyBinaryTree = new BinarySearchTreeImpl<Integer>();
 
         /**
          * Binary tree
@@ -30,7 +30,7 @@ public class TreePathProblemsTest {
          *       /  \         \
          *      1   3          13
          */
-        pathProblemTree = new BinaryTreeImpl<Integer>();
+        pathProblemTree = new BinarySearchTreeImpl<Integer>();
         pathProblemTree.insert(8);
         pathProblemTree.insert(4);
         pathProblemTree.insert(10);

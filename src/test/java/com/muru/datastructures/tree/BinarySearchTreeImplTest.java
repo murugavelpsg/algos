@@ -10,7 +10,7 @@ import static org.testng.Assert.*;
 /**
  * Created by msivagna on 2/8/16.
  */
-public class BinaryTreeImplTest {
+public class BinarySearchTreeImplTest {
 
     private static final int MAX_DEPTH = 9;
     BinaryTree<Integer> binaryTree;
@@ -20,7 +20,7 @@ public class BinaryTreeImplTest {
 
     @BeforeClass
     public void setup() {
-        binaryTree = new BinaryTreeImpl<Integer>();
+        binaryTree = new BinarySearchTreeImpl<Integer>();
         binaryTree.insert(8);
         binaryTree.insert(2);
         binaryTree.insert(4);
@@ -30,14 +30,14 @@ public class BinaryTreeImplTest {
         binaryTree.insert(3);
         binaryTree.insert(5);
 
-        emptyBinaryTree = new BinaryTreeImpl<Integer>();
+        emptyBinaryTree = new BinarySearchTreeImpl<Integer>();
 
-        leftBalancedTree = new BinaryTreeImpl<Integer>();
+        leftBalancedTree = new BinarySearchTreeImpl<Integer>();
         for (int i = MAX_DEPTH; i > 0; i--) {
             leftBalancedTree.insert(i);
         }
 
-        oneElementBinaryTree = new BinaryTreeImpl<Integer>();
+        oneElementBinaryTree = new BinarySearchTreeImpl<Integer>();
         oneElementBinaryTree.insert(1);
     }
 
@@ -129,5 +129,15 @@ public class BinaryTreeImplTest {
     @Test
     public void mustReturnFalseIfComparedAgainstAnEmptyTree() {
         assertFalse(binaryTree.isIdentical(emptyBinaryTree));
+    }
+
+    @Test(expectedExceptions = NoSuchElementException.class)
+    public void mustGetExceptionIfTreeIsEmpty() {
+        emptyBinaryTree.maxValue();
+    }
+
+    @Test
+    public void mustGetCorrectMaxValue() {
+        assertEquals(binaryTree.maxValue(), new Integer(8));
     }
 }
