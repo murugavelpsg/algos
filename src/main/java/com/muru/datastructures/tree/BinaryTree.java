@@ -14,7 +14,8 @@ public interface BinaryTree<T extends Comparable<T>> {
     int size();
     int maxDepth();
     T minValue() throws NoSuchElementException;
-    Node getRoot();
+    Node<T> getRoot();
     void setRoot(Node<T> root);
     BinaryTree<T> mirrorTree();
+    boolean isIdentical(BinaryTree<T> inTree);
 }

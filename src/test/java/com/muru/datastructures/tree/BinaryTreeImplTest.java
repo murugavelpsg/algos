@@ -5,8 +5,7 @@ import org.testng.annotations.Test;
 
 import java.util.*;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNull;
+import static org.testng.Assert.*;
 
 /**
  * Created by msivagna on 2/8/16.
@@ -115,5 +114,20 @@ public class BinaryTreeImplTest {
     public void mirrorEmptyTreeTest() {
         BinaryTree<Integer> mirroredTree = emptyBinaryTree.mirrorTree();
         assertNull(mirroredTree.getRoot());
+    }
+
+    @Test
+    public void mustReturnTrueIfTreesAreIdentical() {
+        assertTrue(binaryTree.isIdentical(binaryTree));
+    }
+
+    @Test
+    public void mustReturnFalseIfTreesAreNotIdentical() {
+        assertFalse(binaryTree.isIdentical(leftBalancedTree));
+    }
+
+    @Test
+    public void mustReturnFalseIfComparedAgainstAnEmptyTree() {
+        assertFalse(binaryTree.isIdentical(emptyBinaryTree));
     }
 }

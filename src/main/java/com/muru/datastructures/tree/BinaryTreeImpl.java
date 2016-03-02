@@ -66,6 +66,31 @@ public class BinaryTreeImpl<T extends Comparable<T>> implements BinaryTree {
         return mirrorTree;
     }
 
+    public boolean isIdentical(BinaryTree inTree) {
+        return isIdentical(this.root, inTree.getRoot());
+    }
+
+    private boolean isIdentical(Node<T> root1, Node<T> root2) {
+        if (root1 == null && root2 == null) {
+            return true;
+        }
+
+        if ((root1 == null && root2 != null) || (root1 != null && root2 == null)) {
+            return false;
+        }
+
+        if (!root1.getData().equals(root2.getData())) {
+            return false;
+        }
+
+        if (!isIdentical(root1.getLeft(), root2.getLeft()) ||
+                !isIdentical(root1.getRight(), root2.getRight())) {
+            return false;
+        }
+
+        return true;
+    }
+
     private Node<T> mirrorTree(Node<T> root) {
         if (root == null) {
             return null;
