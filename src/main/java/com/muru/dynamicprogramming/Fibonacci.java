@@ -11,12 +11,12 @@ public class Fibonacci {
         Key = nth number in the fibonacci series
         Value = Fibonacci value of the nth number
      */
-    private Map<Integer, Integer> memoizedFibonacciMap;
+    private Map<Integer, Long> memoizedFibonacciMap;
 
     public Fibonacci() {
-        memoizedFibonacciMap = new HashMap<Integer, Integer>();
-        memoizedFibonacciMap.put(0, 0);
-        memoizedFibonacciMap.put(1, 1);
+        memoizedFibonacciMap = new HashMap<Integer, Long>();
+        memoizedFibonacciMap.put(0, new Long(0));
+        memoizedFibonacciMap.put(1, new Long(1));
     }
 
     /**
@@ -24,12 +24,12 @@ public class Fibonacci {
      * @param n
      * @return
      */
-    public Integer calculateNthFibNumber(Integer n) {
+    public Long calculateNthFibNumber(Integer n) {
         if (n == 0) {
-            return 0;
+            return new Long(0);
         }
         if (n == 1) {
-            return 1;
+            return new Long(1);
         }
         return calculateNthFibNumber(n-1) + calculateNthFibNumber(n-2);
     }
@@ -39,7 +39,7 @@ public class Fibonacci {
      * @param n
      * @return
      */
-    public Integer calculateNthFibNumberUsingMemoization(Integer n) {
+    public Long calculateNthFibNumberUsingMemoization(Integer n) {
         if (memoizedFibonacciMap.containsKey(n)) {
             return memoizedFibonacciMap.get(n);
         }

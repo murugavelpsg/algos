@@ -12,31 +12,31 @@ public class FibonacciTest {
 
     @Test
     public void mustSuccessfullyGet0thFibonacciNumber() {
-        assertEquals(fibonacci.calculateNthFibNumber(0), new Integer(0));
+        assertEquals(fibonacci.calculateNthFibNumber(0), new Long(0));
     }
 
     @Test
     public void mustSuccessfullyGet1stFibonacciNumber() {
-        assertEquals(fibonacci.calculateNthFibNumber(1), new Integer(1));
+        assertEquals(fibonacci.calculateNthFibNumber(1), new Long(1));
     }
 
     @Test
     public void mustSuccessfullyGet9thFibonacciNumber() {
-        assertEquals(fibonacci.calculateNthFibNumber(9), new Integer(34));
+        assertEquals(fibonacci.calculateNthFibNumber(9), new Long(34));
     }
 
     @Test
     public void mustSuccessfullyGetMemoized0thFibonacciNumber() {
-        assertEquals(fibonacci.calculateNthFibNumberUsingMemoization(0), new Integer(0));
+        assertEquals(fibonacci.calculateNthFibNumberUsingMemoization(0), new Long(0));
     }
 
     @Test
     public void mustSuccessfullyGetMemoized1stFibonacciNumber() {
-        assertEquals(fibonacci.calculateNthFibNumberUsingMemoization(1), new Integer(1));
+        assertEquals(fibonacci.calculateNthFibNumberUsingMemoization(1), new Long(1));
     }
 
     @Test
     public void mustSuccessfullyGetMemoized10thFibonacciNumber() {
-        assertEquals(fibonacci.calculateNthFibNumberUsingMemoization(10), new Integer(55));
+        assertEquals(fibonacci.calculateNthFibNumberUsingMemoization(10), new Long(55));
     }
 }
