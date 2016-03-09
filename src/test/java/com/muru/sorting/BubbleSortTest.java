@@ -60,4 +60,16 @@ public class BubbleSortTest {
         bubbleSort.sort(numbers);
         assertEquals(numbers, expectedSortedNumbers);
     }
+
+    @Test
+    public void mustSuccessfullyReturnForANullInput() {
+        bubbleSort.sort(null);
+    }
+
+    @Test
+    public void mustSuccessfullyReturnForAEmptyListInput() {
+        List<Integer> numbers = new ArrayList<Integer>();
+        bubbleSort.sort(numbers);
+        assertEquals(numbers.size(), 0);
+    }
 }

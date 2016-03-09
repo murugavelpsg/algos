@@ -12,6 +12,9 @@ public class SelectionSort<T extends Comparable<T>> {
      * @param inputList
      */
     public void sort(List<T> inputList) {
+        if (inputList == null || inputList.isEmpty()) {
+            return;
+        }
         for (int i = 0; i < inputList.size() - 1; i++) {
             T smallestNumber = inputList.get(i);
             int smallestNumberposition = i;

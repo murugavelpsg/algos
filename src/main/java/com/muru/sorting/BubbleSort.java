@@ -13,6 +13,9 @@ public class BubbleSort<T extends Comparable<T>> {
      * @param inputList
      */
     public void sort(List<T> inputList) {
+        if (inputList == null || inputList.isEmpty()) {
+            return;
+        }
         for (int i = 0; i < inputList.size(); i++) {
             for (int j = 0; j < inputList.size() - i - 1 ; j++) {
                 if (inputList.get(j).compareTo(inputList.get(j + 1)) > 0) {

@@ -59,4 +59,16 @@ public class InsertionSortTest {
         insertionSort.sort(numbers);
         assertEquals(numbers, expectedSortedNumbers);
     }
+
+    @Test
+    public void mustSuccessfullyReturnForANullInput() {
+        insertionSort.sort(null);
+    }
+
+    @Test
+    public void mustSuccessfullyReturnForAEmptyListInput() {
+        List<Integer> numbers = new ArrayList<Integer>();
+        insertionSort.sort(numbers);
+        assertEquals(numbers.size(), 0);
+    }
 }

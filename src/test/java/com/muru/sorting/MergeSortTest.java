@@ -12,12 +12,12 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created by msivagna on 3/8/16.
  */
-public class SelectionSortTest {
-    public SelectionSort<Integer> selectionSort;
+public class MergeSortTest {
+    public MergeSort<Integer> mergeSort;
 
     @BeforeClass
     public void setup() {
-        selectionSort = new SelectionSort<Integer>();
+        mergeSort = new MergeSort<Integer>();
     }
 
     private List<Integer> generateRandomList() {
@@ -35,7 +35,7 @@ public class SelectionSortTest {
         List<Integer> numbers = generateRandomList();
         List<Integer> expectedSortedNumbers = new ArrayList<Integer>(numbers);
         Collections.sort(expectedSortedNumbers);
-        selectionSort.sort(numbers);
+        mergeSort.sort(numbers);
         assertEquals(numbers, expectedSortedNumbers);
     }
 
@@ -45,7 +45,7 @@ public class SelectionSortTest {
         List<Integer> expectedSortedNumbers = new ArrayList<Integer>(numbers);
         Collections.sort(expectedSortedNumbers);
         Collections.sort(numbers);
-        selectionSort.sort(numbers);
+        mergeSort.sort(numbers);
         assertEquals(numbers, expectedSortedNumbers);
     }
 
@@ -56,19 +56,19 @@ public class SelectionSortTest {
         Collections.sort(expectedSortedNumbers);
         Collections.sort(numbers);
         Collections.reverse(numbers);
-        selectionSort.sort(numbers);
+        mergeSort.sort(numbers);
         assertEquals(numbers, expectedSortedNumbers);
     }
 
     @Test
-    public void mustSuccessfullyReturnForANullInput() {
-        selectionSort.sort(null);
+     public void mustSuccessfullyReturnForANullInput() {
+        mergeSort.sort(null);
     }
 
     @Test
     public void mustSuccessfullyReturnForAEmptyListInput() {
         List<Integer> numbers = new ArrayList<Integer>();
-        selectionSort.sort(numbers);
+        mergeSort.sort(numbers);
         assertEquals(numbers.size(), 0);
     }
 }

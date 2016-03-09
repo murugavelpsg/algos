@@ -19,6 +19,9 @@ public class InsertionSort<T extends Comparable<T>> {
      * @param inputList
      */
     public void sort(List<T> inputList) {
+        if (inputList == null || inputList.isEmpty()) {
+            return;
+        }
         for (int i = 0; i < inputList.size() - 1; i++) {
             T elementCurrentlySorted = inputList.get(i + 1);
             int position = i + 1;
