@@ -3,9 +3,7 @@ package com.muru.recursion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
  * Created by msivagna on 3/10/16.
@@ -77,10 +75,15 @@ public class RecursionProblemSet1 {
 
     /**
      * Write a method to compute all permutations of a string of unique characters
+     * Note: Not sure if it is right to ask the caller to supply the memoizedMap. But I felt it is better to have
+     * the caller pass it than declaring a class variable. Class variable maintain state. If a single object is used
+     * across multiple threads then we might run into race conditions
      * @param input
+     * @param memoizedPermutationMap
      * @return
      */
-    public List<String> findPermutationOfNonRepeatingString(String input) {
+    public List<String> findPermutationOfNonRepeatingString(String input,
+                                                            Map<String, List<String>> memoizedPermutationMap) {
         List<String> result = new ArrayList<String>();
 
         //Return empty permutation for null String
@@ -88,9 +91,16 @@ public class RecursionProblemSet1 {
             return result;
         }
 
+        //Look into the memoizedMap. If the result is present then return the result.
+        if (memoizedPermutationMap.containsKey(input)) {
+            return memoizedPermutationMap.get(input);
+        }
+        //If not continue and add the result to the memoized map
+
         //If the input element is of length one then add the string to the result and return
         if (input.length() == 1) {
             result.add(input);
+            memoizedPermutationMap.put(input, result);
             return result;
         }
         /*
@@ -99,7 +109,7 @@ public class RecursionProblemSet1 {
          */
         for (int i = 0; i < input.length(); i++) {
             String restOfTheString = splitAndGetRestOfTheString(input, i);
-            List<String> permutedList = findPermutationOfNonRepeatingString(restOfTheString);
+            List<String> permutedList = findPermutationOfNonRepeatingString(restOfTheString, memoizedPermutationMap);
             for (String permutedItem : permutedList) {
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append(input.charAt(i));
@@ -107,6 +117,7 @@ public class RecursionProblemSet1 {
                 result.add(stringBuilder.toString());
             }
         }
+        memoizedPermutationMap.put(input, result);
         return result;
     }
 

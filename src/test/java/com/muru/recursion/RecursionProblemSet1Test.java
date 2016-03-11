@@ -2,9 +2,7 @@ package com.muru.recursion;
 
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 import static org.testng.Assert.assertEquals;
 
@@ -55,28 +53,32 @@ public class RecursionProblemSet1Test {
     @Test
     public void mustSuccessfullyReturnThePermutedValuesOfAString() {
         String inputString = "abc";
-        List<String> outputList = recursionProblemSet1.findPermutationOfNonRepeatingString(inputString);
+        Map<String, List<String>> memoizedPermutationMap = new HashMap<String, List<String>>();
+        List<String> outputList = recursionProblemSet1.findPermutationOfNonRepeatingString(inputString, memoizedPermutationMap);
         assertEquals(outputList.size(), 6);
     }
 
     @Test
     public void mustSuccessfullyReturnThePermutedValuesOfALargeString() {
         String inputString = "abcdef";
-        List<String> outputList = recursionProblemSet1.findPermutationOfNonRepeatingString(inputString);
+        Map<String, List<String>> memoizedPermutationMap = new HashMap<String, List<String>>();
+        List<String> outputList = recursionProblemSet1.findPermutationOfNonRepeatingString(inputString, memoizedPermutationMap);
         assertEquals(outputList.size(), 720);
     }
 
     @Test
     public void mustSuccessfullyReturnThePermutedValuesOfAOneCharString() {
         String inputString = "a";
-        List<String> outputList = recursionProblemSet1.findPermutationOfNonRepeatingString(inputString);
+        Map<String, List<String>> memoizedPermutationMap = new HashMap<String, List<String>>();
+        List<String> outputList = recursionProblemSet1.findPermutationOfNonRepeatingString(inputString, memoizedPermutationMap);
         assertEquals(outputList.size(), 1);
     }
 
     @Test
     public void mustSuccessfullyReturnThePermutedValuesOfANullString() {
         String inputString = null;
-        List<String> outputList = recursionProblemSet1.findPermutationOfNonRepeatingString(inputString);
+        Map<String, List<String>> memoizedPermutationMap = new HashMap<String, List<String>>();
+        List<String> outputList = recursionProblemSet1.findPermutationOfNonRepeatingString(inputString, memoizedPermutationMap);
         assertEquals(outputList.size(), 0);
     }
 }
