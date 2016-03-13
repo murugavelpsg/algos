@@ -95,12 +95,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
             return false;
         }
 
-        if (!isIdentical(root1.getLeft(), root2.getLeft()) ||
-                !isIdentical(root1.getRight(), root2.getRight())) {
-            return false;
-        }
-
-        return true;
+        return isIdentical(root1.getLeft(), root2.getLeft()) && isIdentical(root1.getRight(), root2.getRight());
     }
 
     private Node<T> mirrorTree(Node<T> root) {
