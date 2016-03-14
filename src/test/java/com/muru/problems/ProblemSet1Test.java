@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Created by msivagna on 3/13/16.
@@ -14,7 +16,7 @@ public class ProblemSet1Test {
     ProblemSet1 problemSet1 = new ProblemSet1();
 
     /*
-        START: PROBLEM SET 1
+        START: PROBLEM 1
      */
     @Test
     public void mustSuccessfullyGetMinAndMaxStockIndex() {
@@ -52,6 +54,46 @@ public class ProblemSet1Test {
         assertEquals(stockReport.getMaxProfit(), 0);
     }
     /*
-        END: PROBLEM SET 1
+        END: PROBLEM 1
+     */
+    /*
+        START: PROBLEM 2
+     */
+    @Test
+    public void mustReturnSuccessForIsomorphicStrings() {
+        String word1 = "abca";
+        String word2 = "zbxz";
+        assertTrue(problemSet1.areWordsIsomorphic(word1, word2));
+    }
+
+    @Test
+    public void mustReturnFailureForNonIsomorphicStringsWithTwoLettersMappingToSameValue() {
+        String word1 = "abcadaf";
+        String word2 = "zbxzdrg";
+        assertFalse(problemSet1.areWordsIsomorphic(word1, word2));
+    }
+
+    @Test
+    public void mustReturnFailureForNonIsomorphicStrings() {
+        String word1 = "abca";
+        String word2 = "zbss";
+        assertFalse(problemSet1.areWordsIsomorphic(word1, word2));
+    }
+
+    @Test
+    public void mustReturnFailureIfStringsAreOfDifferentLength() {
+        String word1 = "abca";
+        String word2 = "zbszasdf";
+        assertFalse(problemSet1.areWordsIsomorphic(word1, word2));
+    }
+
+    @Test
+    public void mustReturnFailureIfOneOfTheStringIsNull() {
+        String word1 = "abca";
+        String word2 = null;
+        assertFalse(problemSet1.areWordsIsomorphic(word1, word2));
+    }
+    /*
+        END: PROBLEM 2
      */
 }

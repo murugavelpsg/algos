@@ -15,6 +15,7 @@ public interface BinaryTree<T extends Comparable<T>> {
     List<T> postOrderTraversal();
     int size();
     int maxDepth();
+    boolean hasElement(T data);
     T minValue() throws NoSuchElementException;
     T maxValue() throws NoSuchElementException;
     BinaryTree<T> mirrorTree();

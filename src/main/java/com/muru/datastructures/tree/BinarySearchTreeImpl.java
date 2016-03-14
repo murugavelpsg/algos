@@ -40,6 +40,22 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
         return maxDepth(root);
     }
 
+    public boolean hasElement(Comparable data) {
+        return hasElement(root, data);
+    }
+
+    private boolean hasElement(Node<T> root, Comparable<T> data) {
+        if (root == null) {
+            return false;
+        }
+
+        if (root.getData().equals(data)) {
+            return true;
+        }
+
+        return hasElement(root.getLeft(), data) || hasElement(root.getRight(), data);
+    }
+
     public T minValue() throws NoSuchElementException {
         if (root == null) {
             throw new NoSuchElementException();

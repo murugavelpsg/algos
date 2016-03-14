@@ -140,4 +140,19 @@ public class BinarySearchTreeImplTest {
     public void mustGetCorrectMaxValue() {
         assertEquals(binaryTree.maxValue(), new Integer(8));
     }
+
+    @Test
+    public void mustSuccessfullyFindAnElementInABST() {
+        assertTrue(binaryTree.hasElement(7));
+    }
+
+    @Test
+     public void mustReturnFalseWhenElementDoesnotExist() {
+        assertFalse(binaryTree.hasElement(100));
+    }
+
+    @Test
+    public void mustReturnFalseForEmptyBinaryTree() {
+        assertFalse(emptyBinaryTree.hasElement(100));
+    }
 }

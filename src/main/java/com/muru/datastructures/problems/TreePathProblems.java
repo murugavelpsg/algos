@@ -16,6 +16,11 @@ public class TreePathProblems {
         this.binaryTree = binaryTree;
     }
 
+    /**
+     * Find if a path with the given sum exists in a binary tree
+     * @param sum
+     * @return
+     */
     public boolean hasPathSum(Integer sum) {
         return hasPathSum(binaryTree.getRoot(), sum);
     }
@@ -32,6 +37,10 @@ public class TreePathProblems {
         return hasPathSum(root.getLeft(), sum) || hasPathSum(root.getRight(), sum);
     }
 
+    /**
+     * Get all the paths in a given binary tree from root
+     * @return
+     */
     public List<List<Integer>> getPaths() {
         List<List<Integer>> pathList = new ArrayList<List<Integer>>();
         List<Integer> currentPath = new ArrayList<Integer>();
