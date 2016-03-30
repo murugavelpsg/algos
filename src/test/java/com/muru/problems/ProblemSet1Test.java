@@ -2,6 +2,7 @@ package com.muru.problems;
 
 import org.testng.annotations.Test;
 
+import javax.xml.bind.ValidationException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -95,5 +96,73 @@ public class ProblemSet1Test {
     }
     /*
         END: PROBLEM 2
+     */
+
+    /*
+        START: PROBLEM 2
+     */
+    @Test
+    public void mustGetABase2Number() throws ValidationException {
+        assertEquals(problemSet1.convertDecimalToABaseBetween2And16(100, 2), "1100100");
+    }
+
+    @Test
+    public void mustGetABase16Number() throws ValidationException {
+        assertEquals(problemSet1.convertDecimalToABaseBetween2And16(100, 16), "64");
+    }
+
+    @Test
+    public void mustGetABase16NumberForInput0() throws ValidationException {
+        assertEquals(problemSet1.convertDecimalToABaseBetween2And16(0, 16), "0");
+    }
+
+    @Test(expectedExceptions = ValidationException.class)
+    public void mustGetExceptionForInvalidBase() throws ValidationException {
+        assertEquals(problemSet1.convertDecimalToABaseBetween2And16(100, 18), "64");
+    }
+
+    @Test(expectedExceptions = ValidationException.class)
+    public void mustGetExceptionForNegativeInput() throws ValidationException {
+        assertEquals(problemSet1.convertDecimalToABaseBetween2And16(-100, 16), "64");
+    }
+    /*
+        END: PROBLEM 2
+     */
+
+    /*
+        START: PROBLEM 3
+     */
+
+    @Test
+    public void mustGetDecimalFromBase2() throws ValidationException {
+        assertEquals(problemSet1.convertBaseBetween2And16ToDecimal("1100100", 2), 100);
+    }
+
+    @Test
+    public void mustGetDecimalFromBase16() throws ValidationException {
+        assertEquals(problemSet1.convertBaseBetween2And16ToDecimal("64", 16), 100);
+    }
+
+    @Test
+    public void mustGetDecimalFromBase16ForInput0() throws ValidationException {
+        assertEquals(problemSet1.convertBaseBetween2And16ToDecimal("0", 16), 0);
+    }
+
+    @Test(expectedExceptions = ValidationException.class)
+    public void mustGetExceptionForNullInput() throws ValidationException {
+        assertEquals(problemSet1.convertBaseBetween2And16ToDecimal(null, 16), 0);
+    }
+
+    @Test(expectedExceptions = ValidationException.class)
+    public void mustGetExceptionForEmptyInput() throws ValidationException {
+        assertEquals(problemSet1.convertBaseBetween2And16ToDecimal("", 16), 0);
+    }
+
+    @Test(expectedExceptions = ValidationException.class)
+    public void mustGetExceptionForInvalidBaseForDecimalConversion() throws ValidationException {
+        assertEquals(problemSet1.convertBaseBetween2And16ToDecimal("1234", 200), 0);
+    }
+    /*
+        END: PROBLEM 3
      */
 }

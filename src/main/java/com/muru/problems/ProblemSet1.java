@@ -1,6 +1,13 @@
 package com.muru.problems;
 
-import java.util.*;
+
+import org.apache.commons.lang.StringUtils;
+
+import javax.xml.bind.ValidationException;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by msivagna on 3/13/16.
@@ -115,5 +122,59 @@ public class ProblemSet1 {
             }
         }
         return true;
+    }
+
+    /**
+     * PROBLEM: 2
+     * Convert decimal to a base between 2 and 16
+     * @return
+     */
+    public String convertDecimalToABaseBetween2And16(int number, int base) throws ValidationException {
+        if(number < 0) {
+            throw new ValidationException("input cannot be negative");
+        }
+
+        if (base < 2 || base > 16) {
+            throw new ValidationException("Base cannot be less than 2 or greater than 16");
+        }
+
+        if (number == 0) {
+            return "0";
+        }
+
+        String baseMap = "0123456789ABCDEF";
+        StringBuilder stringBuilder = new StringBuilder();
+        while (number > 0) {
+            int remainder = number % base;
+            stringBuilder.append(baseMap.charAt(remainder));
+            number = number / base;
+        }
+        return stringBuilder.reverse().toString();
+    }
+
+    /**
+     * PROBLEM: 3
+     * Convert a base between 2 and 16 to decimal
+     * @param input
+     * @param base
+     * @return
+     */
+    public int convertBaseBetween2And16ToDecimal(String input, int base) throws ValidationException {
+        if (base < 2 || base > 16) {
+            throw new ValidationException("Invaid base");
+        }
+
+        if (StringUtils.isEmpty(input)) {
+            throw new ValidationException("Input cannot be null or empty");
+        }
+
+        String baseMap = "0123456789ABCDEF";
+        input = input.toUpperCase();
+        int num = 0;
+        for (int i = 0; i < input.length(); i++) {
+            int digit = baseMap.indexOf(input.charAt(i));
+            num = num * base + digit;
+        }
+        return num;
     }
 }
