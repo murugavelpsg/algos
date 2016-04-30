@@ -25,4 +25,31 @@ public interface List<T> {
      * @return
      */
     int size();
+
+    /**
+     * Checks if the element is present in the linkedlist
+     * @param e
+     * @return
+     */
+    boolean contains(T e);
+
+    /**
+     * Adds element to the beginning of the list
+     * @param e
+     * @return
+     */
+    boolean addAtFirst(T e);
+
+    /**
+     * Removes element at the end of the list
+     * @return
+     */
+    T removeAtEnd() throws NoSuchElementException;
+
+    /**
+     * Peek the first element in the list.
+     * @return
+     * @throws NoSuchElementException
+     */
+    T peek() throws NoSuchElementException;
 }
