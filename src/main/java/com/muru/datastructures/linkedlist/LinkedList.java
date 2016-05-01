@@ -95,4 +95,8 @@ public class LinkedList<T extends Comparable<T>> implements List {
         }
         return head.getData();
     }
+
+    public Node getHead() {
+        return head;
+    }
 }

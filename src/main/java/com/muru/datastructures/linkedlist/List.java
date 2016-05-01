@@ -1,5 +1,7 @@
 package com.muru.datastructures.linkedlist;
 
+import com.muru.datastructures.common.Node;
+
 import java.util.NoSuchElementException;
 
 /**
@@ -52,4 +54,10 @@ public interface List<T> {
      * @throws NoSuchElementException
      */
     T peek() throws NoSuchElementException;
+
+    /**
+     * Returns the root of the linkedlist
+     * @return
+     */
+    Node<T> getHead();
 }
