@@ -28,7 +28,7 @@ public class SearchProblemSet1Test {
 
     @Test
     public void mustGetOneIfTheNumberOccursOnce() {
-        int[] input = {1,1,2,2,3,3,4,4,4,5,5,5,5,6};
+        int[] input = {1,1,2,2,3,3,4,4,4,5,5,5,5,6,7,7};
         SearchProblemSet1 searchProblemSet1 = new SearchProblemSet1();
         assertEquals(searchProblemSet1.countOccurenceOfANumber(input, 6), 1);
     }

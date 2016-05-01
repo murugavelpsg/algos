@@ -19,22 +19,12 @@ public class SearchProblemSet1 {
             return 0;
         }
 
-        if (input.length == 1) {
-            if (input[0] == number) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-
-        int minIndex = findFirstOccurence(input, 0, input.length - 1, number);
-        int maxIndex = findLastOccurence(input, 0, input.length - 1, number);
-        if (minIndex == -1 && maxIndex == -1) {
+        int firstOccurence = findFirstOccurence(input, 0, input.length - 1, number);
+        int lastOccurence = findLastOccurence(input, 0, input.length - 1, number);
+        if (firstOccurence == -1 && lastOccurence == -1) {
             return 0;
-        } else if ((minIndex == -1 && maxIndex >= 0) || (minIndex >= 0 && maxIndex == -1)) {
-            return 1;
         } else {
-            return (maxIndex-minIndex+1);
+            return (lastOccurence-firstOccurence+1);
         }
     }
 
