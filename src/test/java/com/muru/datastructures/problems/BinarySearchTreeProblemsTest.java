@@ -2,10 +2,11 @@ package com.muru.datastructures.problems;
 
 import com.muru.datastructures.tree.BinarySearchTreeImpl;
 import com.muru.datastructures.tree.BinaryTree;
-import com.muru.datastructures.tree.Node;
+import com.muru.datastructures.tree.TreeNode;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.testng.Assert.assertEquals;
@@ -51,6 +52,9 @@ public class BinarySearchTreeProblemsTest {
         binarySearchTree.insert(Integer.MAX_VALUE);
     }
 
+    /*
+        START: Problem - 1 tests
+     */
     @Test
     public void mustPassBstTestForABst() {
         BinarySearchTreeProblems binarySearchTreeProblems = new BinarySearchTreeProblems(binarySearchTree);
@@ -76,40 +80,67 @@ public class BinarySearchTreeProblemsTest {
     }
 
     /*
-        START: COMMON ANCESTOR PROBLEM
+        End: Problem - 1 tests
+     */
+
+    /*
+        START: PROBLEM 2 : COMMON ANCESTOR PROBLEM
      */
     @Test
     public void mustSuccessfullyGetCommonAncestor() {
         BinarySearchTreeProblems binarySearchTreeProblems = new BinarySearchTreeProblems(binarySearchTree);
-        Node<Integer> commonAncestor = binarySearchTreeProblems.findFirstCommonAncestor(13, 9);
+        TreeNode<Integer> commonAncestor = binarySearchTreeProblems.findFirstCommonAncestor(13, 9);
         assertEquals(commonAncestor.getData(), new Integer(10));
     }
 
     @Test(expectedExceptions = NoSuchElementException.class)
     public void mustFailForNullTree() {
         BinarySearchTreeProblems binarySearchTreeProblems = new BinarySearchTreeProblems(null);
-        Node<Integer> commonAncestor = binarySearchTreeProblems.findFirstCommonAncestor(1000, 10001);
+        TreeNode<Integer> commonAncestor = binarySearchTreeProblems.findFirstCommonAncestor(1000, 10001);
     }
 
     @Test(expectedExceptions = NoSuchElementException.class)
     public void mustFailIfOneInputIsNotPresentInTree() {
         BinarySearchTreeProblems binarySearchTreeProblems = new BinarySearchTreeProblems(binarySearchTree);
-        Node<Integer> commonAncestor = binarySearchTreeProblems.findFirstCommonAncestor(1000, 10001);
+        TreeNode<Integer> commonAncestor = binarySearchTreeProblems.findFirstCommonAncestor(1000, 10001);
     }
 
     @Test
     public void mustSuccessfullyGetCommonAncestorForOneElementTree() {
         BinarySearchTreeProblems binarySearchTreeProblems = new BinarySearchTreeProblems(oneElementTree);
-        Node<Integer> commonAncestor = binarySearchTreeProblems.findFirstCommonAncestor(100, 100);
+        TreeNode<Integer> commonAncestor = binarySearchTreeProblems.findFirstCommonAncestor(100, 100);
         assertEquals(commonAncestor.getData(), new Integer(100));
     }
 
     @Test(expectedExceptions = NoSuchElementException.class)
     public void mustFailForEmptyBinaryTree() {
         BinarySearchTreeProblems binarySearchTreeProblems = new BinarySearchTreeProblems(emptyBinaryTree);
-        Node<Integer> commonAncestor = binarySearchTreeProblems.findFirstCommonAncestor(100, 100);
+        TreeNode<Integer> commonAncestor = binarySearchTreeProblems.findFirstCommonAncestor(100, 100);
     }
     /*
-        END: COMMON ANCESTOR PROBLEM
+        END: PROBLEM 2 : COMMON ANCESTOR PROBLEM
+     */
+
+    /*
+        START: Problem - 3 tests
+     */
+    @Test
+    public void mustReturnEmptyListForEmptyBinaryTree() {
+        BinarySearchTreeProblems binarySearchTreeProblems = new BinarySearchTreeProblems(emptyBinaryTree);
+        assertEquals(binarySearchTreeProblems.getElementsInBinaryTreeAtEachLevel().size(), 0);
+    }
+
+    @Test
+    public void mustReturnAListWithAllElementsAtEachDepth() {
+        BinarySearchTreeProblems binarySearchTreeProblems = new BinarySearchTreeProblems(binarySearchTree);
+        List<List<Integer>> nodesAtEachLevel = binarySearchTreeProblems.getElementsInBinaryTreeAtEachLevel();
+        assertEquals(nodesAtEachLevel.size(), binarySearchTree.maxDepth());
+        assertEquals(nodesAtEachLevel.get(0).size(), 1);
+        assertEquals(nodesAtEachLevel.get(1).size(), 2);
+        assertEquals(nodesAtEachLevel.get(2).size(), 3);
+        assertEquals(nodesAtEachLevel.get(3).size(), 3);
+    }
+    /*
+        END: Problem - 3 tests
      */
 }

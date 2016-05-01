@@ -3,18 +3,18 @@ package com.muru.datastructures.tree;
 /**
  * Created by msivagna on 2/8/16.
  */
-public class Node<T> {
+public class TreeNode<T> {
     T data;
-    Node left;
-    Node right;
+    TreeNode left;
+    TreeNode right;
 
-    public Node(T data) {
+    public TreeNode(T data) {
         this.data = data;
         this.left = null;
         this.right = null;
     }
 
-    public Node(T data, Node left, Node right) {
+    public TreeNode(T data, TreeNode left, TreeNode right) {
         this.data = data;
         this.left = left;
         this.right = right;
@@ -28,19 +28,19 @@ public class Node<T> {
         this.data = data;
     }
 
-    public Node getLeft() {
+    public TreeNode getLeft() {
         return left;
     }
 
-    public void setLeft(Node left) {
+    public void setLeft(TreeNode left) {
         this.left = left;
     }
 
-    public Node getRight() {
+    public TreeNode getRight() {
         return right;
     }
 
-    public void setRight(Node right) {
+    public void setRight(TreeNode right) {
         this.right = right;
     }
 }

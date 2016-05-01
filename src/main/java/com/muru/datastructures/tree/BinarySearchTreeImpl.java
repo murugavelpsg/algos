@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
  * Created by msivagna on 2/8/16.
  */
 public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree {
-    Node<T> root;
+    TreeNode<T> root;
 
     public void insert(Comparable data) {
         root = insert(root, data);
@@ -44,7 +44,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
         return hasElement(root, data);
     }
 
-    private boolean hasElement(Node<T> root, Comparable<T> data) {
+    private boolean hasElement(TreeNode<T> root, Comparable<T> data) {
         if (root == null) {
             return false;
         }
@@ -61,7 +61,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
             throw new NoSuchElementException();
         }
 
-        Node<T> temp = root;
+        TreeNode<T> temp = root;
         while (temp.left != null) {
             temp = temp.left;
         }
@@ -73,18 +73,18 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
             throw new NoSuchElementException();
         }
 
-        Node<T> temp = root;
+        TreeNode<T> temp = root;
         while (temp.right != null) {
             temp = temp.right;
         }
         return temp.data;
     }
 
-    public Node getRoot() {
+    public TreeNode getRoot() {
         return root;
     }
 
-    public void setRoot(Node root) {
+    public void setRoot(TreeNode root) {
         this.root = root;
     }
 
@@ -98,7 +98,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
         return isIdentical(this.root, inTree.getRoot());
     }
 
-    private boolean isIdentical(Node<T> root1, Node<T> root2) {
+    private boolean isIdentical(TreeNode<T> root1, TreeNode<T> root2) {
         if (root1 == null && root2 == null) {
             return true;
         }
@@ -114,19 +114,19 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
         return isIdentical(root1.getLeft(), root2.getLeft()) && isIdentical(root1.getRight(), root2.getRight());
     }
 
-    private Node<T> mirrorTree(Node<T> root) {
+    private TreeNode<T> mirrorTree(TreeNode<T> root) {
         if (root == null) {
             return null;
         }
-        Node<T> newNode = new Node<T>(root.getData());
-        newNode.setRight(mirrorTree(root.getLeft()));
-        newNode.setLeft(mirrorTree(root.getRight()));
-        return newNode;
+        TreeNode<T> newTreeNode = new TreeNode<T>(root.getData());
+        newTreeNode.setRight(mirrorTree(root.getLeft()));
+        newTreeNode.setLeft(mirrorTree(root.getRight()));
+        return newTreeNode;
     }
 
-    private Node<T> insert(Node<T> root, Comparable<T> data) {
+    private TreeNode<T> insert(TreeNode<T> root, Comparable<T> data) {
         if (root == null) {
-            return new Node(data, null, null);
+            return new TreeNode(data, null, null);
         }
         if (data.compareTo(root.data) <= 0) {
             root.left = insert(root.left, data);
@@ -136,7 +136,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
         return root;
     }
 
-    private void inorderTraversal(Node<T> root, List<T> output) {
+    private void inorderTraversal(TreeNode<T> root, List<T> output) {
         if (root == null) {
             return;
         }
@@ -145,7 +145,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
         inorderTraversal(root.right, output);
     }
 
-    private void preOrderTraversal(Node<T> root, List<T> output) {
+    private void preOrderTraversal(TreeNode<T> root, List<T> output) {
         if (root == null) {
             return;
         }
@@ -154,7 +154,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
         preOrderTraversal(root.right, output);
     }
 
-    private void postOrderTraversal(Node<T> root, List<T> output) {
+    private void postOrderTraversal(TreeNode<T> root, List<T> output) {
         if (root == null) {
             return;
         }
@@ -163,7 +163,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
         output.add(root.data);
     }
 
-    private int size(Node<T> root) {
+    private int size(TreeNode<T> root) {
         if (root == null) {
             return 0;
         }
@@ -171,7 +171,7 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
         return 1 + size(root.left) + size(root.right);
     }
 
-    private int maxDepth(Node<T> root) {
+    private int maxDepth(TreeNode<T> root) {
         if (root == null) {
             return 0;
         }

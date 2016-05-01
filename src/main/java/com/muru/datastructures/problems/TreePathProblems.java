@@ -1,7 +1,7 @@
 package com.muru.datastructures.problems;
 
 import com.muru.datastructures.tree.BinaryTree;
-import com.muru.datastructures.tree.Node;
+import com.muru.datastructures.tree.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class TreePathProblems {
         return hasPathSum(binaryTree.getRoot(), sum);
     }
 
-    private boolean hasPathSum(Node root, Integer sum) {
+    private boolean hasPathSum(TreeNode root, Integer sum) {
         if (root == null) {
             if (new Integer(0).equals(sum)) {
                 return true;
@@ -48,7 +48,7 @@ public class TreePathProblems {
         return pathList;
     }
 
-    private void getPaths(Node root, List<List<Integer>> pathList, List<Integer> currentPath) {
+    private void getPaths(TreeNode root, List<List<Integer>> pathList, List<Integer> currentPath) {
         //Base condition
         if (root == null) {
             return;
