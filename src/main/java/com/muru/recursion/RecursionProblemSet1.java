@@ -13,7 +13,7 @@ public class RecursionProblemSet1 {
 
     /**
      * Problem-1
-     * Problem statement: A magic index in an array A[0 ... n-1] is definied to be an index such that A[i] = i.
+     * Problem statement: A magic index in an array A[0 ... n-1] is defined to be an index such that A[i] = i.
      * Given a sorted array of distinct integers, write a method to find a magic
      * index, if one exists in array A.
      * @param inputList

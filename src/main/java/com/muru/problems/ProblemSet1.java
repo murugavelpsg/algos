@@ -125,7 +125,7 @@ public class ProblemSet1 {
     }
 
     /**
-     * PROBLEM: 2
+     * PROBLEM: 3
      * Convert decimal to a base between 2 and 16
      * @return
      */
@@ -153,7 +153,7 @@ public class ProblemSet1 {
     }
 
     /**
-     * PROBLEM: 3
+     * PROBLEM: 4
      * Convert a base between 2 and 16 to decimal
      * @param input
      * @param base

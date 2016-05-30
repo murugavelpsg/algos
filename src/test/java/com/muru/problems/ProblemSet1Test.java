@@ -99,7 +99,7 @@ public class ProblemSet1Test {
      */
 
     /*
-        START: PROBLEM 2
+        START: PROBLEM 3
      */
     @Test
     public void mustGetABase2Number() throws ValidationException {
@@ -126,11 +126,11 @@ public class ProblemSet1Test {
         assertEquals(problemSet1.convertDecimalToABaseBetween2And16(-100, 16), "64");
     }
     /*
-        END: PROBLEM 2
+        END: PROBLEM 3
      */
 
     /*
-        START: PROBLEM 3
+        START: PROBLEM 4
      */
 
     @Test
@@ -163,6 +163,6 @@ public class ProblemSet1Test {
         assertEquals(problemSet1.convertBaseBetween2And16ToDecimal("1234", 200), 0);
     }
     /*
-        END: PROBLEM 3
+        END: PROBLEM 4
      */
 }
