@@ -1,4 +1,4 @@
-package com.muru.datastructures.problems.bst;
+package com.muru.problems.bst;
 
 import com.muru.datastructures.tree.BinaryTree;
 import com.muru.datastructures.tree.TreeNode;

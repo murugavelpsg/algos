@@ -1,4 +1,4 @@
-package com.muru.datastructures.problems.linkedlist;
+package com.muru.problems.linkedlist;
 
 import com.muru.datastructures.common.Node;
 import com.muru.datastructures.linkedlist.List;

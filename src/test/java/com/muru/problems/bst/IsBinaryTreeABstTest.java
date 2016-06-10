@@ -1,7 +1,8 @@
-package com.muru.datastructures.problems.bst;
+package com.muru.problems.bst;
 
 import com.muru.datastructures.tree.BinarySearchTreeImpl;
 import com.muru.datastructures.tree.BinaryTree;
+import com.muru.problems.bst.IsBinaryTreeABst;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 

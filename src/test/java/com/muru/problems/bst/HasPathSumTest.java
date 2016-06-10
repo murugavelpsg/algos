@@ -1,7 +1,8 @@
-package com.muru.datastructures.problems.bst;
+package com.muru.problems.bst;
 
 import com.muru.datastructures.tree.BinarySearchTreeImpl;
 import com.muru.datastructures.tree.BinaryTree;
+import com.muru.problems.bst.HasPathSum;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -10,7 +11,7 @@ import static org.testng.Assert.assertEquals;
 /**
  * Created by msivagna on 6/10/16.
  */
-public class FindAllPathsTest {
+public class HasPathSumTest {
     BinaryTree<Integer> pathProblemTree;
     BinaryTree<Integer> emptyBinaryTree;
 
@@ -41,14 +42,16 @@ public class FindAllPathsTest {
     }
 
     @Test
-    public void mustBeSuccessfulForAllPaths() {
-        FindAllPaths findAllPaths = new FindAllPaths(pathProblemTree);
-        assertEquals(findAllPaths.getPaths().size(), 4);
+    public void mustGetTrueForValidSums() {
+        HasPathSum hasPathSum = new HasPathSum(pathProblemTree);
+        assertEquals(hasPathSum.hasPathSum(15), true);
+        assertEquals(hasPathSum.hasPathSum(27), true);
     }
 
     @Test
-    public void mustBeZeroPathForEmptyBinaryTree() {
-        FindAllPaths findAllPaths = new FindAllPaths(emptyBinaryTree);
-        assertEquals(findAllPaths.getPaths().size(), 0);
+    public void mustGetFalseForInvalidSums() {
+        HasPathSum hasPathSum = new HasPathSum(pathProblemTree);
+        assertEquals(hasPathSum.hasPathSum(1232), false);
+        assertEquals(hasPathSum.hasPathSum(23423), false);
     }
 }
