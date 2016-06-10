@@ -1,20 +1,18 @@
-package com.muru.datastructures.problems;
+package com.muru.datastructures.problems.bst;
 
-import com.muru.datastructures.tree.BinaryTree;
 import com.muru.datastructures.tree.BinarySearchTreeImpl;
+import com.muru.datastructures.tree.BinaryTree;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 /**
- * Created by msivagna on 2/10/16.
+ * Created by msivagna on 6/10/16.
  */
-public class TreePathProblemsTest {
-
+public class HasPathSumTest {
     BinaryTree<Integer> pathProblemTree;
     BinaryTree<Integer> emptyBinaryTree;
-    TreePathProblems treePathProblems;
 
     @BeforeClass
     public void setup() {
@@ -44,27 +42,15 @@ public class TreePathProblemsTest {
 
     @Test
     public void mustGetTrueForValidSums() {
-        treePathProblems = new TreePathProblems(pathProblemTree);
-        assertEquals(treePathProblems.hasPathSum(15), true);
-        assertEquals(treePathProblems.hasPathSum(27), true);
+        HasPathSum hasPathSum = new HasPathSum(pathProblemTree);
+        assertEquals(hasPathSum.hasPathSum(15), true);
+        assertEquals(hasPathSum.hasPathSum(27), true);
     }
 
     @Test
     public void mustGetFalseForInvalidSums() {
-        treePathProblems = new TreePathProblems(pathProblemTree);
-        assertEquals(treePathProblems.hasPathSum(1232), false);
-        assertEquals(treePathProblems.hasPathSum(23423), false);
-    }
-
-    @Test
-    public void mustBeSuccessfulForAllPaths() {
-        treePathProblems = new TreePathProblems(pathProblemTree);
-        assertEquals(treePathProblems.getPaths().size(), 4);
-    }
-
-    @Test
-    public void mustBeZeroPathForEmptyBinaryTree() {
-        treePathProblems = new TreePathProblems(emptyBinaryTree);
-        assertEquals(treePathProblems.getPaths().size(), 0);
+        HasPathSum hasPathSum = new HasPathSum(pathProblemTree);
+        assertEquals(hasPathSum.hasPathSum(1232), false);
+        assertEquals(hasPathSum.hasPathSum(23423), false);
     }
 }

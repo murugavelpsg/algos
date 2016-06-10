@@ -1,78 +1,13 @@
-package com.muru.recursion;
+package com.muru.problems.recursion;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
- * Created by msivagna on 3/10/16.
+ * Created by msivagna on 6/10/16.
  */
-public class RecursionProblemSet1 {
-    private static final Logger LOGGER = LoggerFactory.getLogger(RecursionProblemSet1.class);
-
-    /**
-     * Problem-1
-     * Problem statement: A magic index in an array A[0 ... n-1] is defined to be an index such that A[i] = i.
-     * Given a sorted array of distinct integers, write a method to find a magic
-     * index, if one exists in array A.
-     * @param inputList
-     * @return
-     */
-    public Integer findMagicIndex(List<Integer> inputList) {
-        return findMagicIndex(inputList, 0, inputList.size() - 1);
-    }
-
-    private Integer findMagicIndex(List<Integer> inputList, int start, int end) {
-        if (start > end) {
-            throw new NoSuchElementException();
-        }
-        int mid = (start + end)/2;
-        if (inputList.get(mid).compareTo(mid) == 0) {
-            return mid;
-        } else if (inputList.get(mid).compareTo(mid) > 0){
-            return findMagicIndex(inputList, start, mid - 1);
-        } else {
-            return findMagicIndex(inputList, mid + 1, end);
-        }
-    }
-
-    public Integer findMagicIndexWithRepetition(List<Integer> inputList) {
-        return findMagicIndexWithRepetition(inputList, 0, inputList.size() - 1);
-    }
-
-    /**
-     * Followup of Problem-1:
-     * Find the magic index when the elements are repeating.
-     * @param inputList
-     * @param start
-     * @param end
-     * @return
-     */
-    private Integer findMagicIndexWithRepetition(List<Integer> inputList, int start, int end) {
-        if (start > end) {
-            throw new NoSuchElementException();
-        }
-
-        int mid = (start + end) / 2;
-
-        if (inputList.get(mid).compareTo(mid) == 0) {
-            return mid;
-        }
-
-        //Since the list repeats we don't know on which side the magic index is. So search both sides
-        try {
-            int leftIndex = Math.min(inputList.get(mid), mid-1);
-            return findMagicIndexWithRepetition(inputList, start, leftIndex);
-        } catch (NoSuchElementException e) {
-            LOGGER.debug("Element not found on the left hand side of the input list");
-        }
-
-        //Search the right side
-        int rightIndex = Math.max(inputList.get(mid), mid+1);
-        return findMagicIndexWithRepetition(inputList, rightIndex, end);
-    }
-
+public class PermutationOfAString {
     /**
      * Write a method to compute all permutations of a string of unique characters
      * Note: Not sure if it is right to ask the caller to supply the memoizedMap. But I felt it is better to have

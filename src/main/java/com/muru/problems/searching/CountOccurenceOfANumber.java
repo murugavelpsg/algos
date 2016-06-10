@@ -1,9 +1,9 @@
-package com.muru.searching;
+package com.muru.problems.searching;
 
 /**
- * Created by msivagna on 5/1/16.
+ * Created by msivagna on 6/10/16.
  */
-public class SearchProblemSet1 {
+public class CountOccurenceOfANumber {
     /**
      * Problem - 1
      * Given a sorted array arr[] and a number x, write a function that counts the occurrences of x in arr[].

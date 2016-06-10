@@ -1,18 +1,17 @@
-package com.muru.datastructures.problems;
+package com.muru.datastructures.problems.linkedlist;
 
 import com.muru.datastructures.common.Node;
 import com.muru.datastructures.linkedlist.List;
 
 import java.util.NoSuchElementException;
-import java.util.Stack;
 
 /**
- * Created by msivagna on 4/30/16.
+ * Created by msivagna on 6/10/16.
  */
-public class LinkedListProblems {
+public class KthToLastElement {
     List<Integer> list;
 
-    public LinkedListProblems(List<Integer> list) {
+    public KthToLastElement(List<Integer> list) {
         if (list == null) {
             throw new IllegalArgumentException("Input list cannot be null");
         }
@@ -20,7 +19,6 @@ public class LinkedListProblems {
     }
 
     /**
-     * Problem - 1
      * Find kth to last element in the linkedlist
      * @return
      * @throws NoSuchElementException
@@ -53,45 +51,5 @@ public class LinkedListProblems {
             current = current.getNext();
         }
         return current.getData();
-    }
-
-    /**
-     * Problem - 2
-     * Check if given list is a palindrome
-     * @return
-     */
-    public boolean checkIfListIsAPalindrome() {
-        Node<Integer> head = list.getHead();
-        Stack stack = new Stack();
-
-        if (head == null) {
-            return false;
-        }
-
-        if (head.getNext() == null) {
-            return true;
-        }
-
-        Node<Integer> slowRunner = head;
-        Node<Integer> fastRunner = head;
-
-        while (fastRunner != null && fastRunner.getNext() != null) {
-            stack.push(slowRunner.getData());
-            slowRunner = slowRunner.getNext();
-            fastRunner = fastRunner.getNext().getNext();
-        }
-        //Odd sized list. Skip one slowRunner node
-        if (fastRunner != null) {
-            slowRunner = slowRunner.getNext();
-        }
-
-        while (slowRunner != null) {
-            Integer topOfStack = (Integer) stack.pop();
-            if (!slowRunner.getData().equals(topOfStack)) {
-                return false;
-            }
-            slowRunner = slowRunner.getNext();
-        }
-        return true;
     }
 }

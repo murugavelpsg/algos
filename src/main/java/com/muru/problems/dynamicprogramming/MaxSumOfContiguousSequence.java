@@ -1,17 +1,17 @@
-package com.muru.dynamicprogramming.problems;
+package com.muru.problems.dynamicprogramming;
 
 import java.util.List;
 
 /**
  * Created by msivagna on 3/8/16.
  */
-public class DpProblemSet1 {
-    public class MaxSumOfContiguousSequence {
+public class MaxSumOfContiguousSequence {
+    public class MaxSumInfo {
         private int start;
         private int end;
         private int maxSum;
 
-        public MaxSumOfContiguousSequence() {
+        public MaxSumInfo() {
             this.start = 0;
             this.end = 0;
             this.maxSum = 0;
@@ -48,8 +48,8 @@ public class DpProblemSet1 {
      * NOTE: Will work only for array with a mix of positive and negative numbers.
      * @return
      */
-    public MaxSumOfContiguousSequence maximumSumOfContiguousSubsequence(List<Integer> inputList) {
-        MaxSumOfContiguousSequence maxSumOfContiguousSequence = new MaxSumOfContiguousSequence();
+    public MaxSumInfo maximumSumOfContiguousSubsequence(List<Integer> inputList) {
+        MaxSumInfo maxSumInfo = new MaxSumInfo();
         int runningSum = 0;
         int startOfSequence = 0;
         for (int i = 0; i < inputList.size(); i++) {
@@ -64,12 +64,12 @@ public class DpProblemSet1 {
             }
 
             //If running sum is greater than maxSum then update the maxsum
-            if (runningSum > maxSumOfContiguousSequence.getMaxSum()) {
-                maxSumOfContiguousSequence.setMaxSum(runningSum);
-                maxSumOfContiguousSequence.setStart(startOfSequence);
-                maxSumOfContiguousSequence.setEnd(i);
+            if (runningSum > maxSumInfo.getMaxSum()) {
+                maxSumInfo.setMaxSum(runningSum);
+                maxSumInfo.setStart(startOfSequence);
+                maxSumInfo.setEnd(i);
             }
         }
-        return maxSumOfContiguousSequence;
+        return maxSumInfo;
     }
 }

@@ -1,4 +1,4 @@
-package com.muru.dynamicprogramming;
+package com.muru.problems.dynamicprogramming;
 
 import org.testng.annotations.Test;
 
