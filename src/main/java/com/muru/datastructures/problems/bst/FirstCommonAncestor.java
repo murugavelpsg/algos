@@ -1,50 +1,21 @@
-package com.muru.datastructures.problems;
+package com.muru.datastructures.problems.bst;
 
 import com.muru.datastructures.tree.BinaryTree;
 import com.muru.datastructures.tree.TreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
- * Created by msivagna on 3/1/16.
+ * Created by msivagna on 6/10/16.
  */
-public class BinarySearchTreeProblems {
+public class FirstCommonAncestor {
     private BinaryTree<Integer> binaryTree;
 
-    public BinarySearchTreeProblems(BinaryTree<Integer> binaryTree) {
+    public FirstCommonAncestor(BinaryTree<Integer> binaryTree) {
         this.binaryTree = binaryTree;
     }
 
     /**
-     * Problem - 1
-     * Check if a binary tree is a binary search tree
-     * @return
-     */
-    public boolean isBinaryTreeABst() {
-        if (binaryTree.getRoot() == null) {
-            return false;
-        }
-        return isBinaryTreeABst(binaryTree.getRoot(), Integer.MIN_VALUE, Integer.MAX_VALUE);
-    }
-
-    private boolean isBinaryTreeABst(TreeNode<Integer> root,
-                                     Integer minValue, Integer maxValue) {
-        if (root == null) {
-            return true;
-        }
-
-        if (!(root.getData().compareTo(minValue) >= 0 && root.getData().compareTo(maxValue) <= 0)) {
-            return false;
-        }
-
-        return isBinaryTreeABst(root.getLeft(), minValue, root.getData()) &&
-                isBinaryTreeABst(root.getRight(), root.getData(), maxValue);
-    }
-
-    /**
-     * Problem - 2
      * Find the common ancestor in a given binary search tree. The below implementation
      * works even if the binary tree is not a binary search tree
      * @param elem1
@@ -98,34 +69,5 @@ public class BinarySearchTreeProblems {
         }
 
         return isElemInSubtree(root.getLeft(), elem) || isElemInSubtree(root.getRight(), elem);
-    }
-
-    /**
-     * Problem - 3
-     * Given a binary tree, design an algorithm which creates a linked list of all the noes at each depth
-     * For eg, if you have a tree with depth D, you will have D linked lists
-     * @return
-     */
-    public List<List<Integer>> getElementsInBinaryTreeAtEachLevel() {
-        List<List<Integer>> nodesAtEachLevel = new ArrayList<List<Integer>>();
-        getElementsInBinaryTreeAtEachLevel(binaryTree.getRoot(), nodesAtEachLevel, 0);
-        return nodesAtEachLevel;
-    }
-
-    private void getElementsInBinaryTreeAtEachLevel(TreeNode<Integer> root, List<List<Integer>> nodesAtEachLevel, int level) {
-        if (root == null) {
-            return;
-        }
-
-        if (nodesAtEachLevel.size() > level) {
-            nodesAtEachLevel.get(level).add(root.getData());
-        } else {
-            List<Integer> listAtLevel = new ArrayList<Integer>();
-            listAtLevel.add(root.getData());
-            nodesAtEachLevel.add(level, listAtLevel);
-        }
-
-        getElementsInBinaryTreeAtEachLevel(root.getLeft(), nodesAtEachLevel, level+1);
-        getElementsInBinaryTreeAtEachLevel(root.getRight(), nodesAtEachLevel, level+1);
     }
 }
