@@ -99,4 +99,33 @@ public class LinkedList<T extends Comparable<T>> implements List {
     public Node getHead() {
         return head;
     }
+
+    public boolean removeLastOccurence(Object e) {
+        Node<T> prevToLastOccurence = null;
+        Node<T> lastOccurence = null;
+        Node<T> prevNode = null;
+        Node<T> currentNode = head;
+        //Find the last occurence by traversing the entire list
+        while (currentNode != null) {
+            if (currentNode.getData().equals((T)e)) {
+                lastOccurence = currentNode;
+                prevToLastOccurence = prevNode;
+            }
+            prevNode = currentNode;
+            currentNode = currentNode.getNext();
+        }
+        if (lastOccurence != null) {
+            if (prevToLastOccurence == null) {
+                //If the last occurence is the first element
+                head = lastOccurence.getNext();
+            } else {
+                //last occurence might be in the middle or the end
+                prevToLastOccurence.setNext(lastOccurence.getNext());
+            }
+            lastOccurence.setNext(null);
+            size--;
+            return true;
+        }
+        return false;
+    }
 }

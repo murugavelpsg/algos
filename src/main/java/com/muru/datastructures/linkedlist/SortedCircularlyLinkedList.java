@@ -120,4 +120,8 @@ public class SortedCircularlyLinkedList<T extends Comparable<T>> implements List
     public Node getHead() {
         return head;
     }
+
+    public boolean removeLastOccurence(Object e) {
+        throw new UnsupportedOperationException("removeLastOccurence is not supported");
+    }
 }

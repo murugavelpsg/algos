@@ -60,4 +60,12 @@ public interface List<T> {
      * @return
      */
     Node<T> getHead();
+
+    /**
+     * Removes the last occurence from the list when traversing the node from head to tail
+     * Returns true if the element is successfully removed else false when the element is not found
+     * @param e
+     * @return
+     */
+    boolean removeLastOccurence(T e);
 }

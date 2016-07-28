@@ -5,6 +5,8 @@ import org.testng.annotations.Test;
 import java.util.NoSuchElementException;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Created by msivagna on 4/30/16.
@@ -145,5 +147,81 @@ public class LinkedListTest {
         list.add(new Integer(10));
         assertEquals(list.removeAtEnd(), new Integer(10));
         assertEquals(list.size(), 0);
+    }
+
+    @Test
+    public void mustGetFalseWhenTheListIsEmpty() {
+        List<Integer> list = new LinkedList<Integer>();
+        assertFalse(list.removeLastOccurence(new Integer(5)));
+        assertEquals(list.size(), 0);
+    }
+
+    @Test
+    public void mustGetFalseIfTheElementIsNotFound() {
+        List<Integer> list = new LinkedList<Integer>();
+        list.add(new Integer(1));
+        list.add(new Integer(3));
+        list.add(new Integer(10));
+        list.add(new Integer(20));
+        list.add(new Integer(30));
+        list.add(new Integer(40));
+        assertFalse(list.removeLastOccurence(new Integer(5)));
+        assertEquals(list.size(), 6);
+    }
+
+    @Test
+    public void mustGetTrueIfTheWhenTheLastOccurenceIsLastElement() {
+        List<Integer> list = new LinkedList<Integer>();
+        list.add(new Integer(1));
+        list.add(new Integer(3));
+        list.add(new Integer(10));
+        list.add(new Integer(3));
+        list.add(new Integer(5));
+        list.add(new Integer(3));
+        assertTrue(list.removeLastOccurence(new Integer(3)));
+        assertEquals(list.size(), 5);
+        assertEquals(list.removeAtEnd(), new Integer(5));
+    }
+
+    @Test
+    public void mustGetTrueIfTheWhenTheLastOccurenceIsFirstElement() {
+        List<Integer> list = new LinkedList<Integer>();
+        list.add(new Integer(1));
+        list.add(new Integer(3));
+        list.add(new Integer(10));
+        list.add(new Integer(3));
+        list.add(new Integer(5));
+        list.add(new Integer(3));
+        assertTrue(list.removeLastOccurence(new Integer(1)));
+        assertEquals(list.size(), 5);
+        assertEquals(list.peek(), new Integer(3));
+    }
+
+    @Test
+    public void mustGetTrueIfTheWhenTheLastOccurenceIsInMiddle() {
+        List<Integer> list = new LinkedList<Integer>();
+        list.add(new Integer(1));
+        list.add(new Integer(3));
+        list.add(new Integer(10));
+        list.add(new Integer(10));
+        list.add(new Integer(5));
+        list.add(new Integer(3));
+        assertTrue(list.removeLastOccurence(new Integer(10)));
+        assertEquals(list.size(), 5);
+    }
+
+    @Test
+    public void mustGetNullWhenTheListIsEmpty() {
+        List<Integer> list = new LinkedList<Integer>();
+        assertEquals(list.getHead(), null);
+    }
+
+    @Test
+    public void mustGetFirstElementWhenTheListIsNotEmpty() {
+        List<Integer> list = new LinkedList<Integer>();
+        list.add(new Integer(1));
+        list.add(new Integer(2));
+        list.add(new Integer(3));
+        assertEquals(list.getHead().getData(), new Integer(1));
     }
 }

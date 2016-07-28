@@ -31,8 +31,15 @@ public class CheckIfStringIsPalindromeTest {
     }
 
     @Test
-    public void mustGetTrueForAValidPalindrome() {
+    public void mustGetTrueForAValidEvenLengthPalindrome() {
         String input = "abba";
+        CheckIfStringIsPalindrome checkIfStringIsPalindrome = new CheckIfStringIsPalindrome();
+        assertTrue(checkIfStringIsPalindrome.isPalindrome(input));
+    }
+
+    @Test
+    public void mustGetTrueForAValidOddLengthPalindrome() {
+        String input = "abcba";
         CheckIfStringIsPalindrome checkIfStringIsPalindrome = new CheckIfStringIsPalindrome();
         assertTrue(checkIfStringIsPalindrome.isPalindrome(input));
     }

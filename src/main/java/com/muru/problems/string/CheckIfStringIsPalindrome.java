@@ -17,7 +17,7 @@ public class CheckIfStringIsPalindrome {
         }
         String lowerCaseInput = input.toLowerCase();
         int maxLength = lowerCaseInput.length() - 1;
-        for (int i = 0; i < lowerCaseInput.length(); i++) {
+        for (int i = 0; i < lowerCaseInput.length() / 2; i++) {
             if (lowerCaseInput.charAt(i) != lowerCaseInput.charAt(maxLength - i)) {
                 return false;
             }
