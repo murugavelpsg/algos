@@ -128,4 +128,42 @@ public class LinkedList<T extends Comparable<T>> implements List {
         }
         return false;
     }
+
+    public Object peekLast() {
+        if (head == null) {
+            return null;
+        }
+        Node<T> temp = head;
+        while (temp.getNext() != null) {
+            temp = temp.getNext();
+        }
+        return temp.getData();
+    }
+
+    public boolean remove(Object e) {
+        boolean found = false;
+        if (head == null) {
+            return found;
+        }
+        Node<T> prevNode = null;
+        Node<T> currentNode = head;
+        while(currentNode != null) {
+            if (currentNode.getData().equals(e)) {
+                found = true;
+                break;
+            }
+            prevNode = currentNode;
+            currentNode = currentNode.getNext();
+        }
+        if (found) {
+            if (currentNode == head) {
+                head = currentNode.getNext();
+            } else {
+                prevNode.setNext(currentNode.getNext());
+            }
+            size--;
+            currentNode.setNext(null);
+        }
+        return found;
+    }
 }

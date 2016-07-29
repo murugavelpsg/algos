@@ -68,4 +68,20 @@ public interface List<T> {
      * @return
      */
     boolean removeLastOccurence(T e);
+
+    /**
+     * Retrieves, but does not remove, the last element of this list,
+     * or returns null if this list is empty.
+     * @return
+     */
+    T peekLast();
+
+    /**
+     * Removes the first occurrence of the specified element from this list, if it is present.
+     * If this list does not contain the element, it is unchanged.
+     * Returns true if the element is present.
+     * @param e
+     * @return
+     */
+    boolean remove(T e);
 }

@@ -124,4 +124,12 @@ public class SortedCircularlyLinkedList<T extends Comparable<T>> implements List
     public boolean removeLastOccurence(Object e) {
         throw new UnsupportedOperationException("removeLastOccurence is not supported");
     }
+
+    public Object peekLast() {
+        throw new UnsupportedOperationException("peekLast is not supported");
+    }
+
+    public boolean remove(Object e) {
+        throw new UnsupportedOperationException("removing a particular element is not supported");
+    }
 }

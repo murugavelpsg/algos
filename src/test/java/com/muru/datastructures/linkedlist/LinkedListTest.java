@@ -4,9 +4,7 @@ import org.testng.annotations.Test;
 
 import java.util.NoSuchElementException;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 /**
  * Created by msivagna on 4/30/16.
@@ -157,7 +155,7 @@ public class LinkedListTest {
     }
 
     @Test
-    public void mustGetFalseIfTheElementIsNotFound() {
+    public void mustGetFalseIfTheLastOccurenceIsNotFound() {
         List<Integer> list = new LinkedList<Integer>();
         list.add(new Integer(1));
         list.add(new Integer(3));
@@ -180,7 +178,7 @@ public class LinkedListTest {
         list.add(new Integer(3));
         assertTrue(list.removeLastOccurence(new Integer(3)));
         assertEquals(list.size(), 5);
-        assertEquals(list.removeAtEnd(), new Integer(5));
+        assertEquals(list.peekLast(), new Integer(5));
     }
 
     @Test
@@ -211,7 +209,7 @@ public class LinkedListTest {
     }
 
     @Test
-    public void mustGetNullWhenTheListIsEmpty() {
+    public void mustGetNullHeadWhenTheListIsEmpty() {
         List<Integer> list = new LinkedList<Integer>();
         assertEquals(list.getHead(), null);
     }
@@ -223,5 +221,84 @@ public class LinkedListTest {
         list.add(new Integer(2));
         list.add(new Integer(3));
         assertEquals(list.getHead().getData(), new Integer(1));
+    }
+
+    @Test
+    public void mustGetNullForPeekLastIfListIsEmpty() {
+        List<Integer> list = new LinkedList<Integer>();
+        assertNull(list.peekLast());
+    }
+
+    @Test
+    public void mustGetLastElementForPeekLastIfListIsEmpty() {
+        List<Integer> list = new LinkedList<Integer>();
+        list.add(new Integer(1));
+        list.add(new Integer(3));
+        list.add(new Integer(10));
+        list.add(new Integer(10));
+        list.add(new Integer(5));
+        list.add(new Integer(3));
+        assertEquals(list.peekLast(), new Integer(3));
+        assertEquals(list.size(), 6);
+    }
+
+    @Test
+    public void mustGetFalseWhenObjectRemovedFromEmptyList() {
+        List<Integer> list = new LinkedList<Integer>();
+        assertFalse(list.remove(new Integer(1)));
+    }
+
+    @Test
+    public void mustGetFalseWhenObjectRemovedNotPresentInNonEmptyList() {
+        List<Integer> list = new LinkedList<Integer>();
+        list.add(new Integer(1));
+        list.add(new Integer(3));
+        list.add(new Integer(10));
+        list.add(new Integer(10));
+        list.add(new Integer(5));
+        list.add(new Integer(3));
+        assertFalse(list.remove(new Integer(100)));
+        assertEquals(list.size(), 6);
+    }
+
+    @Test
+    public void mustGetTrueWhenObjectRemovedIsFirstInNonEmptyList() {
+        List<Integer> list = new LinkedList<Integer>();
+        list.add(new Integer(1));
+        list.add(new Integer(3));
+        list.add(new Integer(10));
+        list.add(new Integer(10));
+        list.add(new Integer(5));
+        list.add(new Integer(3));
+        assertTrue(list.remove(new Integer(1)));
+        assertEquals(list.size(), 5);
+        assertEquals(list.peek(), new Integer(3));
+    }
+
+    @Test
+    public void mustGetTrueWhenObjectRemovedIsMiddleInNonEmptyList() {
+        List<Integer> list = new LinkedList<Integer>();
+        list.add(new Integer(1));
+        list.add(new Integer(3));
+        list.add(new Integer(10));
+        list.add(new Integer(10));
+        list.add(new Integer(5));
+        list.add(new Integer(3));
+        assertTrue(list.remove(new Integer(10)));
+        assertEquals(list.size(), 5);
+    }
+
+    @Test
+    public void mustGetTrueWhenObjectRemovedIsLastInNonEmptyList() {
+        List<Integer> list = new LinkedList<Integer>();
+        list.add(new Integer(1));
+        list.add(new Integer(3));
+        list.add(new Integer(10));
+        list.add(new Integer(10));
+        list.add(new Integer(5));
+        list.add(new Integer(30));
+        assertTrue(list.remove(new Integer(30)));
+        assertEquals(list.size(), 5);
+        assertEquals(list.peekLast(), new Integer(5));
     }
 }
