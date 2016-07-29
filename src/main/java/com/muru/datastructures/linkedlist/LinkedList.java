@@ -166,4 +166,8 @@ public class LinkedList<T extends Comparable<T>> implements List {
         }
         return found;
     }
+
+    public void setHead(Node node) {
+        this.head = node;
+    }
 }

@@ -84,4 +84,10 @@ public interface List<T> {
      * @return
      */
     boolean remove(T e);
+
+    /**
+     * Set the value for head of the list
+     * @param node
+     */
+    void setHead(Node<T> node);
 }
