@@ -12,7 +12,7 @@ import static org.testng.Assert.assertEquals;
 public class MergeTwoSortedListsInAscendingOrderTest {
     @Test
     public void mustGetEmptyListWhenTwoListsAreEmpty() {
-        MergeTwoSortedListsInAscendingOrder mergeTwoSortedListsInAscendingOrder =
+        MergeTwoSortedListsInAscendingOrder<Integer> mergeTwoSortedListsInAscendingOrder =
                 new MergeTwoSortedListsInAscendingOrder();
         List<Integer> list1 = new LinkedList<Integer>();
         List<Integer> list2 = new LinkedList<Integer>();
@@ -22,7 +22,7 @@ public class MergeTwoSortedListsInAscendingOrderTest {
 
     @Test
     public void mustGetTheOtherListWhenOneOfTheListIsEmpty() {
-        MergeTwoSortedListsInAscendingOrder mergeTwoSortedListsInAscendingOrder =
+        MergeTwoSortedListsInAscendingOrder<Integer> mergeTwoSortedListsInAscendingOrder =
                 new MergeTwoSortedListsInAscendingOrder();
         List<Integer> list1 = new LinkedList<Integer>();
         List<Integer> list2 = new LinkedList<Integer>();
@@ -37,7 +37,7 @@ public class MergeTwoSortedListsInAscendingOrderTest {
 
     @Test
     public void mustGetTheMergedListsInAscendingOrder() {
-        MergeTwoSortedListsInAscendingOrder mergeTwoSortedListsInAscendingOrder =
+        MergeTwoSortedListsInAscendingOrder<Integer> mergeTwoSortedListsInAscendingOrder =
                 new MergeTwoSortedListsInAscendingOrder();
         List<Integer> list1 = new LinkedList<Integer>();
         list1.add(1);
@@ -66,7 +66,7 @@ public class MergeTwoSortedListsInAscendingOrderTest {
 
     @Test
     public void mustMergeOneElemListAndMultipleElemInAscendingOrder() {
-        MergeTwoSortedListsInAscendingOrder mergeTwoSortedListsInAscendingOrder =
+        MergeTwoSortedListsInAscendingOrder<Integer> mergeTwoSortedListsInAscendingOrder =
                 new MergeTwoSortedListsInAscendingOrder();
         List<Integer> list1 = new LinkedList<Integer>();
         list1.add(1);

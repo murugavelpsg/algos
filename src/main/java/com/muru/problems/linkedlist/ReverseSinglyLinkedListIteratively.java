@@ -5,13 +5,13 @@ import com.muru.datastructures.linkedlist.List;
 
 /**
  * Created by msivagna on 7/28/16.
+ * Reverse a singly linkedlist iteratively
  */
 public class ReverseSinglyLinkedListIteratively {
     public void reverse(List<Integer> list) {
         if (list == null || list.size() <= 1) {
             return;
         }
-
         Node<Integer> previous = null;
         Node<Integer> current = list.getHead();
         Node<Integer> next = current.getNext();
