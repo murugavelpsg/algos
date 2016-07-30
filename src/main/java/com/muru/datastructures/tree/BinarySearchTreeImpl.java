@@ -98,6 +98,109 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
         return isIdentical(this.root, inTree.getRoot());
     }
 
+    public boolean remove(Comparable value) {
+        if (root == null) {
+            return false;
+        }
+
+        //Search for the element and its parent in the binary search tree
+        SearchNodeForRemoval searchNodeForRemoval = new SearchNodeForRemoval();
+        if (!searchNode(root, (T)value, searchNodeForRemoval)) {
+            return false;
+        }
+
+        //If tree has only one element then set root to null
+        if (size(root) == 1) {
+            root = null;
+            return true;
+        }
+
+        // If the element to be removed has both the children then find the inorder successor
+        // Find the inorder successor and set its value to the found node
+        // Then the problem boils down to one of the following cases
+        TreeNode<T> nodeToBeRemoved = searchNodeForRemoval.getNodeToBeRemoved();
+        TreeNode<T> parentOfTheNodeToBeRemoved = searchNodeForRemoval.getParentOfTheNodeToBeRemoved();
+        if (nodeToBeRemoved.getLeft() != null && nodeToBeRemoved.getRight() != null) {
+            TreeNode<T> nodeToBeRemovedSuccessor = nodeToBeRemoved.getRight();
+            parentOfTheNodeToBeRemoved = nodeToBeRemoved;
+            while (nodeToBeRemovedSuccessor.getLeft() != null) {
+                parentOfTheNodeToBeRemoved = nodeToBeRemovedSuccessor;
+                nodeToBeRemovedSuccessor = nodeToBeRemovedSuccessor.getLeft();
+            }
+            nodeToBeRemoved.setData(nodeToBeRemovedSuccessor.getData());
+            nodeToBeRemoved = nodeToBeRemovedSuccessor;
+        }
+
+        // If the node to be removed has no children
+        // If the node to be removed has only right child
+        // if the node to be removed has only left child
+        if (nodeToBeRemoved.getLeft() == null && nodeToBeRemoved.getRight() == null) {
+            if (parentOfTheNodeToBeRemoved.getLeft() == nodeToBeRemoved) {
+                parentOfTheNodeToBeRemoved.setLeft(null);
+            } else {
+                parentOfTheNodeToBeRemoved.setRight(null);
+            }
+        } else if (nodeToBeRemoved.getLeft() == null && nodeToBeRemoved.getRight() != null) {
+            if (parentOfTheNodeToBeRemoved.getLeft() == nodeToBeRemoved) {
+                parentOfTheNodeToBeRemoved.setLeft(nodeToBeRemoved.getRight());
+            } else {
+                parentOfTheNodeToBeRemoved.setRight(nodeToBeRemoved.getRight());
+            }
+        } else if (nodeToBeRemoved.getLeft() != null && nodeToBeRemoved.getRight() == null) {
+            if (parentOfTheNodeToBeRemoved.getLeft() == nodeToBeRemoved) {
+                parentOfTheNodeToBeRemoved.setLeft(nodeToBeRemoved.getLeft());
+            } else {
+                parentOfTheNodeToBeRemoved.setRight(nodeToBeRemoved.getLeft());
+            }
+        } else {
+            assert false;
+        }
+        return true;
+    }
+
+    private boolean searchNode(TreeNode<T> root, T value,
+                               SearchNodeForRemoval searchNodeForRemoval) {
+        TreeNode<T> nodeToBeRemoved = root;
+        TreeNode<T> parentOfTheNodeToBeRemoved = null;
+        while (nodeToBeRemoved != null) {
+            if (value.equals(nodeToBeRemoved.getData())) {
+                searchNodeForRemoval.setNodeToBeRemoved(nodeToBeRemoved);
+                searchNodeForRemoval.setParentOfTheNodeToBeRemoved(parentOfTheNodeToBeRemoved);
+                return true;
+            } else {
+                if (value.compareTo(nodeToBeRemoved.getData()) > 0) {
+                    parentOfTheNodeToBeRemoved = nodeToBeRemoved;
+                    nodeToBeRemoved = nodeToBeRemoved.getRight();
+                } else {
+                    parentOfTheNodeToBeRemoved = nodeToBeRemoved;
+                    nodeToBeRemoved = nodeToBeRemoved.getLeft();
+                }
+            }
+        }
+        return false;
+    }
+
+    private class SearchNodeForRemoval {
+        TreeNode<T> nodeToBeRemoved;
+        TreeNode<T> parentOfTheNodeToBeRemoved;
+
+        public TreeNode<T> getNodeToBeRemoved() {
+            return nodeToBeRemoved;
+        }
+
+        public void setNodeToBeRemoved(TreeNode<T> nodeToBeRemoved) {
+            this.nodeToBeRemoved = nodeToBeRemoved;
+        }
+
+        public TreeNode<T> getParentOfTheNodeToBeRemoved() {
+            return parentOfTheNodeToBeRemoved;
+        }
+
+        public void setParentOfTheNodeToBeRemoved(TreeNode<T> parentOfTheNodeToBeRemoved) {
+            this.parentOfTheNodeToBeRemoved = parentOfTheNodeToBeRemoved;
+        }
+    }
+
     private boolean isIdentical(TreeNode<T> root1, TreeNode<T> root2) {
         if (root1 == null && root2 == null) {
             return true;
