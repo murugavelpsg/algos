@@ -1,4 +1,7 @@
 # algos
 My scratchpad for practising algorithm 
 
-- Followed Test driven development to solve each problem. Checkout the tests written for these problems. 
+- Programmed to interfaces not the concrete implementations
+- Written the basic datastructures like linked list, stack, tree, queue etc. Also used the same datastructures to solve the problems. 
+- Followed Test driven development (TDD) to solve each problem. 
+- Written comprehensive tests first for each problem using TESTNG before arriving at the solution. 
