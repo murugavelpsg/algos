@@ -12,7 +12,6 @@ import static org.testng.Assert.*;
  * Created by msivagna on 2/8/16.
  */
 public class BinarySearchTreeImplTest {
-
     private static final int MAX_DEPTH = 9;
 
     @BeforeMethod
@@ -21,6 +20,18 @@ public class BinarySearchTreeImplTest {
         /*
             The binary tree below is composed of elements between 1 and 14
          */
+
+        /**
+         * Binary tree structure
+         *                                  8
+         *                      2                        12
+         *                 1         4              10          14
+         *                       3       5       9      11    13
+         *                                  7
+         *                               6
+         *
+         */
+
         BinaryTree<Integer> binaryTree = new BinarySearchTreeImpl<Integer>();
         binaryTree.insert(8);
         binaryTree.insert(2);
