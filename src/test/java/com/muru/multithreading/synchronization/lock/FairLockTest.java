@@ -13,10 +13,59 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 /**
- * Created by msivagna on 7/30/16.
+ * Created by msivagna on 7/31/16.
  */
-public class SimpleLockTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(SimpleLockTest.class);
+public class FairLockTest {
+    private static final Logger LOGGER = LoggerFactory.getLogger(FairLockTest.class);
+    private static final int MAX_THREAD_COUNT = 10;
+
+    /**
+     * To check fairness, create callables that returns its own ID and execute it with enough
+     * interval in between. The values returned by the callable should be in ascending order.
+     */
+    private class MyRunnable implements Runnable {
+        private Integer id = null;
+        private Lock lock = new FairLock();
+        private List<Integer> executionOrderList = null;
+
+        public MyRunnable(Integer id, Lock lock, List<Integer> executionOrderList) {
+            this.id = id;
+            this.lock = lock;
+            this.executionOrderList = executionOrderList;
+        }
+
+        public void run() {
+            Thread currentThread = Thread.currentThread();
+            currentThread.setName(Integer.toString(id));
+            try {
+                lock.acquire();
+                executionOrderList.add(id);
+            }
+            catch (InterruptedException e) {
+                LOGGER.error("Got exception ", e);
+                assertTrue(false, "Should not get any exception");
+            }
+            finally {
+                lock.release();
+            }
+        }
+    }
+
+    @Test
+    public void testTheFairnessOfTheLock() throws InterruptedException {
+        Lock lock = new FairLock();
+        List<Integer> actualExecutionOrder = new ArrayList<Integer>();
+        ExecutorService executor = Executors.newFixedThreadPool(MAX_THREAD_COUNT);
+        int CALLABLE_COUNT = 100000;
+        for (int i = 0; i < CALLABLE_COUNT; i++) {
+            Runnable myRunnable = new MyRunnable(new Integer(i), lock, actualExecutionOrder);
+            executor.submit(myRunnable);
+        }
+        executor.shutdown();
+        executor.awaitTermination(5, TimeUnit.MINUTES);
+        List<Integer> expectedExecutionOrder = ((FairLock) lock).getRequestOrder();
+        assertEquals(actualExecutionOrder, expectedExecutionOrder);
+    }
 
     /*
         Test for race condition
@@ -24,7 +73,6 @@ public class SimpleLockTest {
         to CALLABLE_COUNT. The value returned by the future should be from 1 to CALLABLE_COUNT
         after sorting.
      */
-    private final int MAX_THREAD_COUNT = 10;
     private class SharedVariable {
         private Integer count = 0;
 
