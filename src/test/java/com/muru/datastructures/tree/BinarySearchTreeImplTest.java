@@ -93,7 +93,7 @@ public class BinarySearchTreeImplTest {
     public void testIfMaxDepthIsZeroForEmptyTree(ITestContext ctx) {
         BinarySearchTreeFixture fixture = (BinarySearchTreeFixture) ctx.getAttribute("fixture");
         BinaryTree<Integer> emptyBinaryTree = fixture.getEmptyBinaryTree();
-        assertEquals(emptyBinaryTree.maxDepth(), 0);
+        assertEquals(emptyBinaryTree.height(), 0);
     }
 
     @Test
@@ -101,7 +101,7 @@ public class BinarySearchTreeImplTest {
         //Build a left balanced binary tree
         BinarySearchTreeFixture fixture = (BinarySearchTreeFixture) ctx.getAttribute("fixture");
         BinaryTree<Integer> leftBalancedTree = fixture.getLeftBalancedTree();
-        assertEquals(leftBalancedTree.maxDepth(), MAX_DEPTH);
+        assertEquals(leftBalancedTree.height(), MAX_DEPTH);
     }
 
     @Test(expectedExceptions = NoSuchElementException.class)
@@ -115,7 +115,7 @@ public class BinarySearchTreeImplTest {
     public void mustGetMaxDepthFromOneElementBinaryTree(ITestContext ctx) {
         BinarySearchTreeFixture fixture = (BinarySearchTreeFixture) ctx.getAttribute("fixture");
         BinaryTree<Integer> oneElementBinaryTree = fixture.getOneElementBinaryTree();
-        assertEquals(oneElementBinaryTree.maxDepth(), 1);
+        assertEquals(oneElementBinaryTree.height(), 1);
     }
 
     @Test

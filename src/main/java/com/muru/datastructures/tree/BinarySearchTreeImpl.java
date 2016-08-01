@@ -36,8 +36,8 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
         return size(root);
     }
 
-    public int maxDepth() {
-        return maxDepth(root);
+    public int height() {
+        return height(root);
     }
 
     public boolean hasElement(Comparable data) {
@@ -274,13 +274,13 @@ public class BinarySearchTreeImpl<T extends Comparable<T>> implements BinaryTree
         return 1 + size(root.left) + size(root.right);
     }
 
-    private int maxDepth(TreeNode<T> root) {
+    private int height(TreeNode<T> root) {
         if (root == null) {
             return 0;
         }
 
-        int leftDepth = maxDepth(root.left);
-        int rightDepth = maxDepth(root.right);
+        int leftDepth = height(root.left);
+        int rightDepth = height(root.right);
         return 1 + (leftDepth > rightDepth ? leftDepth : rightDepth);
     }
 }

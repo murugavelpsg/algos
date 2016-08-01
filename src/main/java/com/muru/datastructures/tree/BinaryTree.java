@@ -53,7 +53,7 @@ public interface BinaryTree<T extends Comparable<T>> {
      * Returns the maximum depth of the tree
      * @return
      */
-    int maxDepth();
+    int height();
 
     /**
      * Returns true if the element is present in the three

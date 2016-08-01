@@ -58,7 +58,7 @@ public class ElementsAtEachLevelTest {
     public void mustReturnAListWithAllElementsAtEachDepth() {
         ElementsAtEachLevel elementsAtEachLevel = new ElementsAtEachLevel(binarySearchTree);
         List<List<Integer>> nodesAtEachLevel = elementsAtEachLevel.getElementsInBinaryTreeAtEachLevel();
-        assertEquals(nodesAtEachLevel.size(), binarySearchTree.maxDepth());
+        assertEquals(nodesAtEachLevel.size(), binarySearchTree.height());
         assertEquals(nodesAtEachLevel.get(0).size(), 1);
         assertEquals(nodesAtEachLevel.get(1).size(), 2);
         assertEquals(nodesAtEachLevel.get(2).size(), 3);
