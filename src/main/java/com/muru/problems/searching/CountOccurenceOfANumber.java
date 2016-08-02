@@ -21,7 +21,7 @@ public class CountOccurenceOfANumber {
 
         int firstOccurence = findFirstOccurence(input, 0, input.length - 1, number);
         int lastOccurence = findLastOccurence(input, 0, input.length - 1, number);
-        if (firstOccurence == -1 && lastOccurence == -1) {
+        if (firstOccurence == -1 || lastOccurence == -1) {
             return 0;
         } else {
             return (lastOccurence-firstOccurence+1);
