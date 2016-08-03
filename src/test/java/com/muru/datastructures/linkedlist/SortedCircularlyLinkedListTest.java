@@ -205,6 +205,30 @@ public class SortedCircularlyLinkedListTest {
     }
 
     @Test
+    public void mustIterateThroughAllTheElementsInTheListSuccessfully() {
+        Integer[] elemsInList = {1, 2, 5, 4};
+        List<Integer> list = new SortedCircularlyLinkedList<Integer>();
+        list.add(new Integer(1));
+        list.add(new Integer(5));
+        list.add(new Integer(2));
+        list.add(new Integer(4));
+        int i = 0;
+        for (Integer data : list) {
+            assertEquals(data, elemsInList[i]);
+            i++;
+        }
+    }
+
+    @Test
+    public void mustIterateThroughEmptyListSuccessfully() {
+        List<Integer> list = new SortedCircularlyLinkedList<Integer>();
+        for (Integer data : list) {
+            assertTrue(false, "should not iterate");
+        }
+        assertTrue(true);
+    }
+
+    @Test
     public void mustGetAllElementsInASortedOrder() {
         List<Integer> list = new SortedCircularlyLinkedList<Integer>();
         list.add(new Integer(1));

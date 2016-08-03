@@ -1,7 +1,9 @@
 package com.muru.datastructures.linkedlist;
 
 import com.muru.datastructures.common.Node;
+import com.muru.designpatterns.iterator.LinkedListIterator;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -169,5 +171,9 @@ public class LinkedList<T extends Comparable<T>> implements List {
 
     public void setHead(Node node) {
         this.head = node;
+    }
+
+    public Iterator iterator() {
+        return new LinkedListIterator(this);
     }
 }

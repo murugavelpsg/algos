@@ -8,6 +8,8 @@ import java.util.NoSuchElementException;
 
 /**
  * Created by msivagna on 8/3/16.
+ *
+ * An iterator for sorted circular linked list implementation in the datastructures package
  */
 public class SortedCircularlyLinkedListIterator<T> implements Iterator<T> {
     private List<T> list;

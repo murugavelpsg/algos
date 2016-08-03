@@ -8,6 +8,8 @@ import java.util.NoSuchElementException;
 
 /**
  * Created by msivagna on 8/3/16.
+ *
+ * An iterator for linked list implementation in the datastructures package
  */
 public class LinkedListIterator<T> implements Iterator<T> {
     private Node currentNode;

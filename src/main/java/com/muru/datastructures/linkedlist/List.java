@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 /**
  * Created by msivagna on 4/30/16.
  */
-public interface List<T> {
+public interface List<T> extends Iterable<T> {
     /**
      * Adds an element to the end of the list
      * @param e

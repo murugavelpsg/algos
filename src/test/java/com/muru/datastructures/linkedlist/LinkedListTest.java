@@ -301,4 +301,30 @@ public class LinkedListTest {
         assertEquals(list.size(), 5);
         assertEquals(list.peekLast(), new Integer(5));
     }
+
+    @Test
+    public void mustSuccessfullyIterateAllTheObjectsInList() {
+        Integer[] elementsInList = {1, 3, 10, 10, 5, 30};
+        List<Integer> list = new LinkedList<Integer>();
+        list.add(new Integer(1));
+        list.add(new Integer(3));
+        list.add(new Integer(10));
+        list.add(new Integer(10));
+        list.add(new Integer(5));
+        list.add(new Integer(30));
+        int i = 0;
+        for (Integer data : list) {
+            assertEquals(data, elementsInList[i]);
+            i++;
+        }
+    }
+
+    @Test
+    public void mustIterateThroughEmptyListSuccessfully() {
+        List<Integer> list = new LinkedList<Integer>();
+        for (Integer data : list) {
+            assertTrue(false, "should not iterate");
+        }
+        assertTrue(true);
+    }
 }
