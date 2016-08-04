@@ -206,7 +206,7 @@ public class SortedCircularlyLinkedListTest {
 
     @Test
     public void mustIterateThroughAllTheElementsInTheListSuccessfully() {
-        Integer[] elemsInList = {1, 2, 5, 4};
+        Integer[] elemsInList = {1, 2, 4, 5};
         List<Integer> list = new SortedCircularlyLinkedList<Integer>();
         list.add(new Integer(1));
         list.add(new Integer(5));
