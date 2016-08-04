@@ -44,4 +44,8 @@ public class StackImpl<T extends Comparable<T>> implements Stack {
         }
         return top.getData();
     }
+
+    public int size() {
+        return currentSize;
+    }
 }

@@ -33,4 +33,10 @@ public interface Stack<T> {
      * @throws StackUnderflowException
      */
     T peek() throws StackUnderflowException;
+
+    /**
+     * Return the current size of the stack
+     * @return
+     */
+    int size();
 }
