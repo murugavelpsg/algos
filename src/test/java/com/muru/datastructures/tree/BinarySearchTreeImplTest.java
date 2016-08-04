@@ -312,6 +312,52 @@ public class BinarySearchTreeImplTest {
         assertEquals(binaryTree.inorderTraversal(), sortedList);
     }
 
+    @Test
+    public void mustGetTheCorrectPreOrderTraversedList(ITestContext ctx) {
+        BinarySearchTreeFixture fixture = (BinarySearchTreeFixture) ctx.getAttribute("fixture");
+        BinaryTree<Integer> binaryTree = fixture.getBinaryTree();
+        List<Integer> expectedPreOrderList = new ArrayList<Integer>();
+        expectedPreOrderList.add(new Integer(8));
+        expectedPreOrderList.add(new Integer(2));
+        expectedPreOrderList.add(new Integer(1));
+        expectedPreOrderList.add(new Integer(4));
+        expectedPreOrderList.add(new Integer(3));
+        expectedPreOrderList.add(new Integer(5));
+        expectedPreOrderList.add(new Integer(7));
+        expectedPreOrderList.add(new Integer(6));
+        expectedPreOrderList.add(new Integer(12));
+        expectedPreOrderList.add(new Integer(10));
+        expectedPreOrderList.add(new Integer(9));
+        expectedPreOrderList.add(new Integer(11));
+        expectedPreOrderList.add(new Integer(14));
+        expectedPreOrderList.add(new Integer(13));
+        List<Integer> actualPreOrderList = binaryTree.preOrderTraversal();
+        assertEquals(actualPreOrderList, expectedPreOrderList);
+    }
+
+    @Test
+    public void mustGetTheCorrectPostOrderTraversedList(ITestContext ctx) {
+        BinarySearchTreeFixture fixture = (BinarySearchTreeFixture) ctx.getAttribute("fixture");
+        BinaryTree<Integer> binaryTree = fixture.getBinaryTree();
+        List<Integer> expectedPostOrderList = new ArrayList<Integer>();
+        expectedPostOrderList.add(new Integer(1));
+        expectedPostOrderList.add(new Integer(3));
+        expectedPostOrderList.add(new Integer(6));
+        expectedPostOrderList.add(new Integer(7));
+        expectedPostOrderList.add(new Integer(5));
+        expectedPostOrderList.add(new Integer(4));
+        expectedPostOrderList.add(new Integer(2));
+        expectedPostOrderList.add(new Integer(9));
+        expectedPostOrderList.add(new Integer(11));
+        expectedPostOrderList.add(new Integer(10));
+        expectedPostOrderList.add(new Integer(13));
+        expectedPostOrderList.add(new Integer(14));
+        expectedPostOrderList.add(new Integer(12));
+        expectedPostOrderList.add(new Integer(8));
+        List<Integer> actualPostOrderList = binaryTree.postOrderTraversal();
+        assertEquals(actualPostOrderList, expectedPostOrderList);
+    }
+
     private class BinarySearchTreeFixture {
         BinaryTree<Integer> binaryTree;
         BinaryTree<Integer> leftBalancedTree;

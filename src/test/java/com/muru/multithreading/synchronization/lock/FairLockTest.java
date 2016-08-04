@@ -228,7 +228,11 @@ public class FairLockTest {
         public void run() {
             try {
                 lock.acquire();
+                lock.acquire();
+                lock.acquire();
                 sharedVariable.setCount(sharedVariable.getCount() + 1);
+                lock.release();
+                lock.release();
                 lock.release();
             }
             catch (InterruptedException e) {
