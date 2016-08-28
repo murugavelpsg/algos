@@ -50,6 +50,7 @@ public class SortIpv4Addresses {
                 }
                 address = address + octet * Math.pow(256, i);
             }
+            ipAddressMap.put(strIpv4Address, address);
             return address;
         }
 
