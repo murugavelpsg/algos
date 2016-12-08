@@ -12,7 +12,7 @@ public interface Heap<T extends Comparable<T>> {
     boolean add(T element);
 
     /**
-     * Remove the max element from the heap
+     * Remove the max or minimum element from the heap
      * @return
      */
     T remove();

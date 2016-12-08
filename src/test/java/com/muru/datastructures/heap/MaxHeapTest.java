@@ -170,4 +170,10 @@ public class MaxHeapTest {
         Heap<Integer> maxHeap = new MaxHeap<Integer>(2);
         assertEquals(maxHeap.contains(new Integer(30)), false);
     }
+
+    @Test
+    public void mustGetFalseWhenElemSearchedIsNull() {
+        Heap<Integer> maxHeap = new MaxHeap<Integer>(2);
+        assertEquals(maxHeap.contains(null), false);
+    }
 }

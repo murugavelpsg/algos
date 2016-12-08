@@ -76,21 +76,20 @@ public class MaxHeap<T extends Comparable<T>> implements Heap {
     }
 
     private int findIndexOfGreatestOfTwoChildren(int index) {
-        int childIndex1 = (2 * index + 1) > currentHeapSize - 1 ? -1 : (2 * index + 1);
-        int childIndex2 = (2 * index + 2) > currentHeapSize - 1 ? -1 : (2 * index + 2);
+        int childIndex1 = 2 * index + 1;
+        int childIndex2 = 2 * index + 2;
 
-        if (childIndex1 != -1 && childIndex2 != -1) {
+        if (childIndex1 > currentHeapSize-1) {
+            return -1;
+        } else if (childIndex2 > currentHeapSize-1) {
+            return childIndex1;
+        } else {
             if (heapArray[childIndex1].compareTo(heapArray[childIndex2]) >= 0) {
                 return childIndex1;
             } else {
                 return childIndex2;
             }
-        } else if (childIndex1 == -1 && childIndex2 > 0) {
-            return childIndex2;
-        } else {
-            return childIndex1;
         }
-
     }
 
     public Comparable peek() {
