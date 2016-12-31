@@ -15,7 +15,7 @@ import javax.xml.bind.ValidationException;
  * Created by msivagna on 12/23/16.
  */
 public class MinDifferenceBetweenTwoSortedArrays {
-    public MinDiffSummary calculateDifference(int[] input1, int[] input2) throws ValidationException {
+    public MinDiffSummary calculateDifference(Integer[] input1, Integer[] input2) throws ValidationException {
         MinDiffSummary minDiffSummary = new MinDiffSummary();
         if (input1 == null || input2 == null || input1.length ==0 || input2.length == 0) {
             throw new ValidationException("Input arrays cannot be null or empty");

@@ -13,8 +13,8 @@ public class MinDifferenceBetweenTwoSortedArraysTest {
 
     @Test
     public void mustGetTheMinDiff() throws ValidationException {
-        int[] input1 = {3, 27, 45, 68, 70, 81, 99};
-        int[] input2 = {9, 16, 25, 35, 70, 84};
+        Integer[] input1 = {3, 27, 45, 68, 70, 81, 99};
+        Integer[] input2 = {9, 16, 25, 35, 70, 84};
         int expectedDifference = 0;
         int expectedArray1Index = 4;
         int expectedArray2Index = 4;
@@ -27,8 +27,8 @@ public class MinDifferenceBetweenTwoSortedArraysTest {
 
     @Test
     public void mustGetTheMinDiffWhenArray1IsMuchSmaller() throws ValidationException {
-        int[] input1 = {3, 27, 45, 65, 72, 82, 85, 99};
-        int[] input2 = {9, 70, 84};
+        Integer[] input1 = {3, 27, 45, 65, 72, 82, 85, 99};
+        Integer[] input2 = {9, 70, 84};
         int expectedDifference = 1;
         int expectedArray1Index = 6;
         int expectedArray2Index = 2;
@@ -41,8 +41,8 @@ public class MinDifferenceBetweenTwoSortedArraysTest {
 
     @Test
     public void mustGetTheMinDiffWhenArray2IsMuchSmaller() throws ValidationException {
-        int[] input1 = {9, 70, 84};
-        int[] input2 = {3, 27, 45, 65, 72, 82, 85, 99};
+        Integer[] input1 = {9, 70, 84};
+        Integer[] input2 = {3, 27, 45, 65, 72, 82, 85, 99};
         int expectedDifference = 1;
         int expectedArray1Index = 2;
         int expectedArray2Index = 6;
@@ -55,8 +55,8 @@ public class MinDifferenceBetweenTwoSortedArraysTest {
 
     @Test
     public void mustGetTheMinDiffWhenTheArraysAreOfEqualLength() throws ValidationException {
-        int[] input1 = {3, 27, 71};
-        int[] input2 = {9, 70, 84};
+        Integer[] input1 = {3, 27, 71};
+        Integer[] input2 = {9, 70, 84};
         int expectedDifference = 1;
         int expectedArray1Index = 2;
         int expectedArray2Index = 1;
@@ -69,8 +69,8 @@ public class MinDifferenceBetweenTwoSortedArraysTest {
 
     @Test
     public void mustGetTheMinDiffWhenTheLastElementsAreEqualAndArraysAreEqualLength() throws ValidationException {
-        int[] input1 = {3, 27, 83};
-        int[] input2 = {9, 70, 84};
+        Integer[] input1 = {3, 27, 83};
+        Integer[] input2 = {9, 70, 84};
         int expectedDifference = 1;
         int expectedArray1Index = 2;
         int expectedArray2Index = 2;
@@ -82,9 +82,23 @@ public class MinDifferenceBetweenTwoSortedArraysTest {
     }
 
     @Test
+    public void mustGetTheMinimumDiffForOneElementArray() throws ValidationException {
+        Integer[] input1 = {3};
+        Integer[] input2 = {9};
+        int expectedDifference = 6;
+        int expectedArray1Index = 0;
+        int expectedArray2Index = 0;
+        MinDifferenceBetweenTwoSortedArrays minDifference = new MinDifferenceBetweenTwoSortedArrays();
+        MinDiffSummary minDiffSummary = minDifference.calculateDifference(input1, input2);
+        assertEquals(minDiffSummary.getMinDiff(), expectedDifference);
+        assertEquals(minDiffSummary.getArray1Index(), expectedArray1Index);
+        assertEquals(minDiffSummary.getArray2Index(), expectedArray2Index);
+    }
+
+    @Test
     public void mustGetTheMinDiffWhenMinIsAtTheEndOfArray() throws ValidationException {
-        int[] input1 = {1, 5, 7};
-        int[] input2 = {2, 3, 6, 7};
+        Integer[] input1 = {1, 5, 7};
+        Integer[] input2 = {2, 3, 6, 7};
         int expectedDifference = 0;
         int expectedArray1Index = 2;
         int expectedArray2Index = 3;
@@ -97,16 +111,16 @@ public class MinDifferenceBetweenTwoSortedArraysTest {
 
     @Test(expectedExceptions = ValidationException.class)
     public void mustFailIfOneOfTheArrayIsEmpty() throws ValidationException {
-        int[] input1 = {3, 27, 45, 68, 70, 81, 99};
-        int[] input2 = {};
+        Integer[] input1 = {3, 27, 45, 68, 70, 81, 99};
+        Integer[] input2 = {};
         MinDifferenceBetweenTwoSortedArrays minDifference = new MinDifferenceBetweenTwoSortedArrays();
         MinDiffSummary minDiffSummary = minDifference.calculateDifference(input1, input2);
     }
 
     @Test(expectedExceptions = ValidationException.class)
     public void mustFailIfOneOrBothInputIsNull() throws ValidationException {
-        int[] input1 = {3, 27, 45, 68, 70, 81, 99};
-        int[] input2 = null;
+        Integer[] input1 = {3, 27, 45, 68, 70, 81, 99};
+        Integer[] input2 = null;
         MinDifferenceBetweenTwoSortedArrays minDifference = new MinDifferenceBetweenTwoSortedArrays();
         minDifference.calculateDifference(input1, input2);
     }
