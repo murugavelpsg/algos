@@ -59,7 +59,31 @@ public class ShortestWordDistanceTest {
     }
 
     @Test
-    public void mustGetZeroIfTheWordsAreSame() throws ValidationException {
+    public void mustGetDistanceIfTheWordsAreSame() throws ValidationException {
+        String[] words = {"shortest", "word", "distance", "practice", "makes", "perfect", "coding", "makes", "distance",
+                "alpha", "practice", "tango", "delta", "shortest"};
+        String word1 = "practice";
+        String word2 = "practice";
+        int expectedDistance = 7;
+        ShortestWordDistance shortestWordDistance = new ShortestWordDistance();
+        int actualDistance = shortestWordDistance.calculateDistance(words, word1, word2);
+        assertEquals(actualDistance, expectedDistance);
+    }
+
+    @Test
+    public void mustGetNegOneIfTheWordsAreSameAndTheyAreAbsent() throws ValidationException {
+        String[] words = {"shortest", "word", "distance", "practice", "makes", "perfect", "coding", "makes", "distance",
+                "alpha", "practice", "tango", "delta", "shortest"};
+        String word1 = "abc";
+        String word2 = "abc";
+        int expectedDistance = -1;
+        ShortestWordDistance shortestWordDistance = new ShortestWordDistance();
+        int actualDistance = shortestWordDistance.calculateDistance(words, word1, word2);
+        assertEquals(actualDistance, expectedDistance);
+    }
+
+    @Test
+    public void mustGetZeroIfTheWordsAreSameAndOccursOnce() throws ValidationException {
         String[] words = {"shortest", "word", "distance", "practice", "makes", "perfect", "coding", "makes", "distance",
                 "alpha", "practice", "tango", "delta", "shortest"};
         String word1 = "delta";
